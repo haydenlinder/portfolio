@@ -2,7 +2,7 @@ import * as THREE from "three"
 import React, { useMemo } from "react"
 import { useLoader, useUpdate } from "react-three-fiber"
 import * as data from 'three/examples/fonts/helvetiker_regular.typeface.json'
-console.log(data)
+
 const Text = ({
     children,
     vAlign = "center",
