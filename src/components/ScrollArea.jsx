@@ -2,7 +2,7 @@ import state from '../state';
 
 const ScrollArea = ({ pages = 1 }) => {
     const handleScroll = (e) => {
-        state.top = e.target.scrollTop
+        state.top = e.target.scrollTop/8
     }
 
     return(
