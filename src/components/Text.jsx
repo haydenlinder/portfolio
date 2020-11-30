@@ -1,7 +1,8 @@
 import * as THREE from "three"
 import React, { useMemo } from "react"
 import { useLoader, useUpdate } from "react-three-fiber"
-import * as data from 'three/examples/fonts/helvetiker_regular.typeface.json'
+import * as data from 'three/examples/fonts/helvetiker_bold.typeface.json'
+import { Box } from '@react-three/flex'
 
 const Text = ({
     children,
@@ -38,12 +39,18 @@ const Text = ({
         [children],
     )
     return (
-        <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
-            <mesh ref={mesh} castShadow receiveShadow>
-                <textGeometry args={[children, config]} />
-                <meshPhysicalMaterial color="black" />
-            </mesh>
-        </group>
+        <Box dir='row' wrap='wrap' width='100%' justify='center'>
+            {children.split(' ').map(child => 
+            <Box mr={1} mb={1} >
+                <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
+                    <mesh ref={mesh} castShadow receiveShadow>
+                        <textGeometry args={[child, config]} />
+                        <meshPhysicalMaterial color="black" />
+                    </mesh>
+                </group>
+            </Box>
+            )}
+        </Box>
     )
 }
 

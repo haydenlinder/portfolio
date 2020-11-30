@@ -1,14 +1,11 @@
-import { Flex, Box } from '@react-three/flex'
-import { Canvas, useFrame } from 'react-three-fiber';
-import { useRef, useEffect, Suspense } from 'react';
+import { Canvas } from 'react-three-fiber';
+import { Suspense } from 'react';
 import Bulb from './components/Bulb';
-import * as THREE from 'three';
-import state from './state';
 import Layout from './components/Layout';
 import ScrollArea from './components/ScrollArea';
+import Header from './components/Header'
 
 function App() {
-
   return (
     <div 
       style={{ 
@@ -20,14 +17,14 @@ function App() {
       <Canvas 
         concurrent
         noEvents
-        camera={ { position: [0,1,10] } }
+        camera={ { position: [0,0,50] } }
         colorManagement
         shadowMap
         onPointerMove={null}
       >
         <axesHelper args={[5]}/>
-        <ambientLight />
-        <Bulb position={[0, 3, 3]}/>
+        <ambientLight intensity={0.3}/>
+        <Bulb position={[0, 30, 10]}/>
         <Suspense fallback={null}>
           <Layout />
         </Suspense>
