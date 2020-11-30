@@ -1,8 +1,10 @@
 import state from '../state';
 
-const ScrollArea = ({ pages = 1 }) => {
+const ScrollArea = ({ pages = 1, children }) => {
     const handleScroll = (e) => {
-        state.top = e.target.scrollTop/16
+        // e.preventDefault();
+        console.log(e.nativeEvent)
+        state.top += e.nativeEvent.wheelDeltaY
     }
 
     return(
@@ -14,13 +16,13 @@ const ScrollArea = ({ pages = 1 }) => {
             left: 0,
             overflow: 'auto'
         }}
-            onScroll={handleScroll}
         >
             <div
                 style={{
                     height: `${pages * 100}vh`,
                 }}
             >
+                {children}
             </div>
         </div>
     )

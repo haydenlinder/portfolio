@@ -21,7 +21,6 @@ const Layout = () => {
 
     const { size } = useThree();
     const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
-
     return (
         <group ref={groupRef}>
             <Flex
@@ -31,7 +30,7 @@ const Layout = () => {
             >
                 <AboutMenuItem /> 
             </Flex>
-            <mesh position={[0, 0, -2]} receiveShadow>
+            <mesh position={[0, 0, -2]} receiveShadow >
                 <planeBufferGeometry args={[vpWidth+5,vpHeight+5]} />
                 <meshPhysicalMaterial color='white' />
             </mesh>

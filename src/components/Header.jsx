@@ -6,11 +6,11 @@ import { Box, Flex } from '@react-three/flex';
 const Header = props => {
     const { size } = useThree();
     const [vpWidth] = useAspect("cover", size.width, size.height)
-
+    const width = Math.min(vpWidth-10, 100)
     return (
         <Flex 
-            size={[vpWidth-10]}
-            position={[-(vpWidth-10)/2,35,1]}
+            size={[width]}
+            position={[-width/2,35,1]}
             dir='row' 
             justify='space-between' 
             align='center'
