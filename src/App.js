@@ -16,20 +16,19 @@ function App() {
     >
       <Canvas 
         concurrent
-        noEvents
         camera={ { position: [0,0,50] } }
         colorManagement
         shadowMap
-        onPointerMove={null}
       >
         <axesHelper args={[5]}/>
         <ambientLight intensity={0.3}/>
-        <Bulb position={[0, 30, 10]}/>
+        <Bulb position={[0, 30, 40]}/>
         <Suspense fallback={null}>
+          <Header />
           <Layout />
         </Suspense>
       </Canvas> 
-      <ScrollArea pages={1.5}/>
+      <ScrollArea pages={3}/>
     </div>
   );
 }
