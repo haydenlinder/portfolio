@@ -2,6 +2,8 @@ import { useThree } from 'react-three-fiber';
 import { useAspect } from '@react-three/drei';
 import Text from './Text';
 import { Box, Flex } from '@react-three/flex';
+import state from '../state'
+import * as THREE from 'three'
 
 const Header = props => {
     const { size } = useThree();
@@ -10,7 +12,7 @@ const Header = props => {
     return (
         <Flex 
             size={[width]}
-            position={[-width/2,35,0]}
+            position={[-width/2,30,0]}
             dir='row' 
             justify='space-between' 
             align='center'
@@ -28,9 +30,18 @@ const Header = props => {
                 </Box>
             </Box>
             <Box centerAnchor>
-                <Text>
-                    Menu
-                </Text>
+                <mesh 
+                    castShadow receiveShadow
+                    onPointerDown={e => state.top = 0} 
+                    onPointerEnter={e => e.object.scale.lerp(new THREE.Vector3(1.1,1.1,1.1),1)}
+                    onPointerLeave={e => e.object.scale.lerp(new THREE.Vector3(1,1,1),1)}
+                >
+                    <boxBufferGeometry args={[10,4,0.05]}/>
+                    <meshPhysicalMaterial color='blue'/>
+                    <Text color='white'>
+                        Menu
+                    </Text>
+                </mesh>
             </Box>
         </Flex>
     )

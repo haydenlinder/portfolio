@@ -29,7 +29,7 @@ const Layout = () => {
                 justify='space-around'
                 dir='row'
                 wrap='wrap'
-                position={[-width/2,vpHeight/2-10, 3]}
+                position={[-width/2,20, 3]}
                 size={[width,0,0]}
             >
                 <AboutMenuItem /> 
