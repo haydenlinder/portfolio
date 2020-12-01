@@ -21,13 +21,20 @@ const Layout = () => {
 
     const { size } = useThree();
     const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
+    const width = Math.min(vpWidth - 10 , 80)
+
     return (
         <group ref={groupRef}>
             <Flex
-                align="center"
-                position={[-(vpWidth-2)/2,vpHeight/2 - 5, 2]}
-                size={[vpWidth-2,0,1]}
+                justify='space-around'
+                dir='row'
+                wrap='wrap'
+                position={[-width/2,vpHeight/2-10, 3]}
+                size={[width,0,0]}
             >
+                <AboutMenuItem /> 
+                <AboutMenuItem /> 
+                <AboutMenuItem /> 
                 <AboutMenuItem /> 
             </Flex>
             <mesh position={[0, 0, 0]} receiveShadow >

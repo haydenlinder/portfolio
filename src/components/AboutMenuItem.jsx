@@ -13,7 +13,7 @@ const AboutMenuItem = props => {
         
         switch (ref.current.hover) {
             case 1:
-                ref.current.position.lerp({ x: 0, y:-15, z:20 }, 0.02)
+                ref.current.position.lerp({ x: 0, y:-15, z:10 }, 0.02)
             case 2:
                 ref.current.position.lerp({ x: 0, y:0, z:0 }, 0.02)
                 if (ref.current.position.y === 0) ref.current.hover = 0
@@ -31,7 +31,7 @@ const AboutMenuItem = props => {
 
     return (
         <group ref={ref} >
-            <Box centerAnchor align='center' p={3}>
+            <Box centerAnchor align='center' m={1}>
                 <group ref={sphereRef}>
                     <mesh position={[0, -1, 0]} onPointerEnter={handlePointerEnter} onPointerLeave={handlePointerLeave}>
                         <sphereBufferGeometry args={[6]} />

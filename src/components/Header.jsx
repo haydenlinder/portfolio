@@ -6,7 +6,7 @@ import { Box, Flex } from '@react-three/flex';
 const Header = props => {
     const { size } = useThree();
     const [vpWidth] = useAspect("cover", size.width, size.height)
-    const width = Math.min(vpWidth-10, 100)
+    const width = Math.min(vpWidth-10, 80)
     return (
         <Flex 
             size={[width]}
@@ -15,13 +15,17 @@ const Header = props => {
             justify='space-between' 
             align='center'
         >
-            <Box centerAnchor>
-                <Text>
-                    Hayden Linder
-                </Text>
-                <Text position={[0,-2,0]} size={0.7}>
-                    Web Developer
-                </Text>
+            <Box align='center' height='auto'>
+                <Box centerAnchor>
+                    <Text>
+                        Hayden Linder
+                    </Text>
+                </Box>
+                <Box centerAnchor>
+                    <Text size={0.7}>
+                        Web Developer
+                    </Text>
+                </Box>
             </Box>
             <Box centerAnchor>
                 <Text>
