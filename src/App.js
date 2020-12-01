@@ -13,7 +13,7 @@ function App() {
 
   const handleTouchMove = e => {
     const touchY = e.touches.item(0).pageY
-    const event = { nativeEvent: { deltaY: touchY - state.touchY } }
+    const event = { nativeEvent: { deltaY: 16*(state.touchY - touchY) } }
     handleScroll(event)
     state.touchY = touchY
   }
