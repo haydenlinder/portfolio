@@ -10,7 +10,7 @@ const Header = props => {
     return (
         <Flex 
             size={[width]}
-            position={[-width/2,35,1]}
+            position={[-width/2,35,0]}
             dir='row' 
             justify='space-between' 
             align='center'
@@ -19,8 +19,8 @@ const Header = props => {
                 <Text>
                     Hayden Linder
                 </Text>
-                <Text>
-                    Hayden Linder
+                <Text position={[0,-2,0]} size={0.7}>
+                    Web Developer
                 </Text>
             </Box>
             <Box centerAnchor>

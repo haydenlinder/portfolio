@@ -25,14 +25,18 @@ const Layout = () => {
         <group ref={groupRef}>
             <Flex
                 align="center"
-                position={[-(vpWidth-2)/2,vpHeight/2 - 5]}
+                position={[-(vpWidth-2)/2,vpHeight/2 - 5, 2]}
                 size={[vpWidth-2,0,1]}
             >
                 <AboutMenuItem /> 
             </Flex>
-            <mesh position={[0, 0, -2]} receiveShadow >
+            <mesh position={[0, 0, 0]} receiveShadow >
                 <planeBufferGeometry args={[vpWidth+5,vpHeight+5]} />
                 <meshPhysicalMaterial color='white' />
+            </mesh>
+            <mesh position={[0, 0, -80]} receiveShadow >
+                <planeBufferGeometry args={[vpWidth+50,vpHeight+50]} />
+                <meshPhysicalMaterial color='aquamarine' />
             </mesh>
         </group>
     )

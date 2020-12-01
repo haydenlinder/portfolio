@@ -7,23 +7,32 @@ import Header from './components/Header'
 import state from './state'
 
 function App() {
-  const handleScroll = (e) => {
-    // e.preventDefault();
+  const handleTouchStart = e => {
+    state.touchY = e.touches.item(0).pageY
+  }
+
+  const handleTouchMove = e => {
+    const touchY = e.touches.item(0).pageY
+    const event = { nativeEvent: { deltaY: touchY - state.touchY } }
+    state.touchY = touchY
+  }
+
+  const handleScroll = e => {
     const delta = e.nativeEvent.deltaY/16
     if (delta < 0)
       state.top = Math.max(state.top + delta,0)
     else
-      state.top = Math.min(state.top + delta,100)
-    console.log(state.top)
+      state.top = Math.min(state.top + delta,80)
   }
   return (
-    // <ScrollArea pages={3} />
     <div 
       style={{ 
         height: '100vh', 
         width: '100vw',
       }}
       onWheel={handleScroll}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
     >
       <Canvas 
         concurrent
@@ -39,6 +48,7 @@ function App() {
           <Layout />
         </Suspense>
       </Canvas> 
+      {/* <ScrollArea pages={3} /> */}
     </div>
   );
 }
