@@ -4,6 +4,7 @@ import Text from './Text';
 import { Box, Flex } from '@react-three/flex';
 import state from '../state'
 import * as THREE from 'three'
+import Bulb from './Bulb';
 
 const Header = props => {
     const { size } = useThree();
@@ -23,6 +24,7 @@ const Header = props => {
                         Hayden Linder
                     </Text>
                 </Box>
+                <Bulb position={[5,-3,1]}/>
                 <Box centerAnchor>
                     <Text size={0.7}>
                         Web Developer

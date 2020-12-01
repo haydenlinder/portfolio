@@ -1,12 +1,15 @@
 import { Canvas } from 'react-three-fiber';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import Bulb from './components/Bulb';
 import Layout from './components/Layout';
-import ScrollArea from './components/ScrollArea';
+import { softShadows } from '@react-three/drei'
 import Header from './components/Header'
 import state from './state'
-
+softShadows()
 function App() {
+  useEffect(() => {
+    window.scrollTo(0,1)
+  })
   const handleTouchStart = e => {
     state.touchY = e.touches.item(0).pageY
   }
@@ -28,7 +31,7 @@ function App() {
   return (
     <div 
       style={{ 
-        height: '100vh', 
+        height: '101vh', 
         width: '100vw',
       }}
       onWheel={handleScroll}
