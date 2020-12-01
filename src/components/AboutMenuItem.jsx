@@ -7,13 +7,14 @@ import * as THREE from 'three'
 const AboutMenuItem = props => {
     const ref = useRef()
     const sphereRef = useRef()
+    const t = Math.random()*Math.PI
     useFrame(({ clock }) => {
         sphereRef.current.rotation.y -= 0.05
-        ref.current.position.y += 0.05*Math.sin(2*clock.getElapsedTime())
+        ref.current.position.y += 0.04*Math.sin(2*clock.getElapsedTime() + t)
         
         switch (ref.current.hover) {
             case 1:
-                ref.current.position.lerp({ x: 0, y:-15, z:10 }, 0.02)
+                ref.current.position.lerp({ x: 0, y:0, z:10 }, 0.02)
             case 2:
                 ref.current.position.lerp({ x: 0, y:0, z:0 }, 0.02)
                 if (ref.current.position.y === 0) ref.current.hover = 0
@@ -34,26 +35,14 @@ const AboutMenuItem = props => {
             <Box centerAnchor align='center' m={1}>
                 <group ref={sphereRef}>
                     <mesh position={[0, -1, 0]} onPointerEnter={handlePointerEnter} onPointerLeave={handlePointerLeave}>
-                        <sphereBufferGeometry args={[6]} />
+                        <sphereBufferGeometry args={[6,100,100]} />
                         <meshPhysicalMaterial side={THREE.DoubleSide} transparent transmission={0.9} clearcoat={1} reflectivity={1} roughness={0}/>
                     </mesh>
                     <Text color='red' size={1.5} position={[0,0,2]} >
                         ?
                     </Text>
-                    <Text color='red' size={1.5} position={[0,0,-2]} rotation={[0,3.14,0]}>
-                        ?
-                    </Text>
-                    <Text color='red' size={1.5} position={[0,0,2]} >
-                        ?
-                    </Text>
-                    <Text color='red' size={1.5} position={[2,0,0]} rotation={[0,1.57,0]}>
-                        ?
-                    </Text>
-                    <Text color='red' size={1.5} position={[-2,0,]} rotation={[0,-1.57,0]}>
-                        ?
-                    </Text>
                     <mesh castShadow receiveShadow>
-                        <sphereBufferGeometry args={[2]}/>
+                        <sphereBufferGeometry args={[2, 100, 100]}/>
                         <meshPhysicalMaterial /> 
                     </mesh>
                 </group>

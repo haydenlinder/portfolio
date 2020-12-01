@@ -2,14 +2,14 @@ import { Canvas } from 'react-three-fiber';
 import { Suspense, useEffect } from 'react';
 import Bulb from './components/Bulb';
 import Layout from './components/Layout';
-import { softShadows } from '@react-three/drei'
+import { softShadows, Html } from '@react-three/drei'
 import Header from './components/Header'
 import state from './state'
+import Model from './components/Model'
+
 softShadows()
 function App() {
-  useEffect(() => {
-    window.scrollTo(0,1)
-  })
+
   const handleTouchStart = e => {
     state.touchY = e.touches.item(0).pageY
   }
@@ -46,13 +46,18 @@ function App() {
       >
         <axesHelper args={[5]}/>
         <ambientLight intensity={0.3}/>
-        <Bulb position={[0, 30, 40]}/>
-        <Suspense fallback={null}>
+        <Bulb position={[0, 10, 20]} />
+        <Suspense fallback={<Html center><h1 style={{color: 'black', fontSize: 100}}>Loading...</h1></Html>}>
           <Header />
           <Layout />
+          <Suspense fallback={null}>
+            {/* <Model 
+              path='/lowpoly_earthv2/scene.gltf'
+              scale={[new Array(3).fill(0.1)]}
+            /> */}
+          </Suspense>
         </Suspense>
       </Canvas> 
-      {/* <ScrollArea pages={3} /> */}
     </div>
   );
 }

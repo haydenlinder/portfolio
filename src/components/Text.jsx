@@ -16,8 +16,8 @@ const Text = ({
         () => ({
             font,
             size: 16,
-            height: 1,
-            curveSegments: 32,
+            height: 2,
+            curveSegments: 64,
             // bevelEnabled: true,
             bevelThickness: 3,
             // bevelSize: 1,

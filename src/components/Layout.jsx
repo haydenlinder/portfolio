@@ -1,5 +1,5 @@
 import { Flex, Box } from '@react-three/flex';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useFrame, useThree } from 'react-three-fiber';
 import { useAspect } from '@react-three/drei'
 import state from '../state';
@@ -10,7 +10,11 @@ import AboutMenuItem from './AboutMenuItem'
 const Layout = () => {
     const groupRef = useRef()
     const vec = new THREE.Vector3()
-
+    useEffect(() => {
+        window.scrollTo(0, 1)
+        // state.top = 0;
+        groupRef.current.position.lerp(vec.set(0,0,20),1)
+    })
     useFrame(three => {
         window.state = three
         groupRef.current.position.lerp(
@@ -37,7 +41,7 @@ const Layout = () => {
                 <AboutMenuItem /> 
                 <AboutMenuItem /> 
             </Flex>
-            <mesh position={[0, 0, 0]} receiveShadow >
+            <mesh position={[0, 0, 0.01]} receiveShadow >
                 <planeBufferGeometry args={[vpWidth+5,vpHeight+5]} />
                 <meshPhysicalMaterial color='white' />
             </mesh>
