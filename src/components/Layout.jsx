@@ -6,13 +6,14 @@ import state from '../state';
 import * as THREE from 'three';
 import Text from './Text';
 import AboutMenuItem from './AboutMenuItem'
-import Model from './Model'
+import Model from './Model';
+import Menu from './Menu'
+
 const Layout = () => {
     const groupRef = useRef()
     const vec = new THREE.Vector3()
     useEffect(() => {
         window.scrollTo(0, 1)
-        // state.top = 0;
         groupRef.current.position.lerp(vec.set(0,0,20),1)
     })
     useFrame(three => {
@@ -29,18 +30,7 @@ const Layout = () => {
 
     return (
         <group ref={groupRef}>
-            <Flex
-                justify='space-around'
-                dir='row'
-                wrap='wrap'
-                position={[-width/2,25, 3]}
-                size={[width,0,0]}
-            >
-                <AboutMenuItem /> 
-                <AboutMenuItem /> 
-                <AboutMenuItem /> 
-                <AboutMenuItem /> 
-            </Flex>
+            <Menu width={width}/>
             <mesh position={[0, 0, 0.01]} receiveShadow >
                 <planeBufferGeometry args={[vpWidth+5,vpHeight+5]} />
                 <meshPhysicalMaterial color='white' />

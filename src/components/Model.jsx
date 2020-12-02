@@ -15,6 +15,12 @@ const Model = ({
         GLTFLoader,
         process.env.PUBLIC_URL + path
     )
+
+    for (const key in model.nodes) {
+        const mesh = model.nodes[key]
+        if (mesh) mesh.castShadow = true
+    }
+    
     return (
         <primitive
             object={model.scene.clone()}

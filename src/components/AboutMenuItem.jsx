@@ -34,7 +34,7 @@ const AboutMenuItem = props => {
 
     return (
         <group ref={ref} >
-            <Box centerAnchor align='center' m={1}>
+            <Box centerAnchor align='center' mr={1} grow={1}>
                 <group ref={sphereRef}>
                     <mesh position={[0, -1, 0]} onPointerEnter={handlePointerEnter} onPointerLeave={handlePointerLeave}>
                         <sphereBufferGeometry args={[6,100,100]} />
