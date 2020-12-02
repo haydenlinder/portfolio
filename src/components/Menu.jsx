@@ -1,19 +1,26 @@
-import { Flex } from '@react-three/flex'
+import { Flex, Box } from '@react-three/flex'
 import AboutMenuItem from './AboutMenuItem'
 
-const Menu = ({ width = 100 }) => {
+const Menu = ({ width = 100, height = 50 }) => {
     return(
         <Flex
-            justify='space-around'
-            dir='row'
-            wrap='wrap'
-            position={[-width / 2, 25, 3]}
-            size={[width, 0, 0]}
+            justify='center'
+            align='center'
+            position={[-width / 2, height/2, 3]}
+            size={[width, height, 0]}
         >
-            <AboutMenuItem />
-            <AboutMenuItem />
-            <AboutMenuItem />
-            <AboutMenuItem />
+            <Box 
+                width='auto'
+                height='auto'
+                dir='row'
+                wrap='wrap'
+                justify='space-around'
+            >
+                <AboutMenuItem />
+                <AboutMenuItem />
+                <AboutMenuItem />
+                <AboutMenuItem />
+            </Box>
         </Flex>
     )
 }

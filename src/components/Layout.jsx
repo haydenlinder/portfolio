@@ -30,7 +30,7 @@ const Layout = () => {
 
     return (
         <group ref={groupRef}>
-            <Menu width={width}/>
+            <Menu width={width} height={vpHeight}/>
             <mesh position={[0, 0, 0.01]} receiveShadow >
                 <planeBufferGeometry args={[vpWidth+5,vpHeight+5]} />
                 <meshPhysicalMaterial color='white' />
