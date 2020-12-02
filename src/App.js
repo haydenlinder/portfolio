@@ -6,7 +6,7 @@ import { softShadows, Html } from '@react-three/drei'
 import Header from './components/Header'
 import state from './state'
 
-// softShadows()
+softShadows()
 function App() {
 
   const handleTouchStart = e => {

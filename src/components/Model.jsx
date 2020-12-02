@@ -1,4 +1,4 @@
-import { useLoader, useThree } from 'react-three-fiber';
+import { useLoader } from 'react-three-fiber';
 import {
     GLTFLoader
 } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -13,11 +13,8 @@ const Model = ({
 }) => {
     const model = useLoader(
         GLTFLoader,
-        path
+        process.env.PUBLIC_URL + path
     )
-    const { scene } = useThree();
-    const key = path.split('/')[1]
-    scene[key] = model.scene
     return (
         <primitive
             object={model.scene.clone()}

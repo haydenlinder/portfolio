@@ -20,7 +20,7 @@ const Header = props => {
     return (
         <Flex 
             size={[width]}
-            position={[-width/2,30,-0.1]}
+            position={[-width/2,33,-0.1]}
             dir='row' 
             justify='space-between' 
             align='center'
