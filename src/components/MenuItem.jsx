@@ -16,7 +16,7 @@ const MenuItem = ({
 }) => {
     const ref = useRef()
     const sphereRef = useRef()
-    const t = Math.random()*Math.PI
+    const t = Math.random()*6.28
     useFrame(({ clock }) => {
         sphereRef.current.rotation.y -= 0.05
         const { current } = ref
@@ -24,9 +24,11 @@ const MenuItem = ({
         switch (current.hover) {
             case 1:
                 current.position.lerp({ x: 0, y:0, z:10 }, 0.02)
+                break
             case 2:
                 current.position.lerp({ x: 0, y:0, z:0 }, 0.02)
                 if (current.position.y === 0) current.hover = 0
+                break
             default: 
                 break
         } 
@@ -51,9 +53,10 @@ const MenuItem = ({
         <group ref={ref} >
             <Box 
                 centerAnchor 
-                align='center'
-                justify='center' 
-                m={1} 
+                // align='center'
+                // justify='center' 
+                mt={1} 
+                mb={1} 
                 grow={1}
             >
                 <group ref={sphereRef}>

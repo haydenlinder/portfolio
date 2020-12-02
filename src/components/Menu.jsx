@@ -19,6 +19,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                 >
                     <MenuItem 
                         text='About'
+                        scrollTo={80}
                         modelProps={{
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 
@@ -26,6 +27,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                     />
                     <MenuItem 
                         text='Projects'
+                        scrollTo={160}
                         modelProps={{
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 
@@ -33,6 +35,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                     />
                     <MenuItem 
                         text='Contact'
+                        scrollTo={240}
                         modelProps={{
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 
@@ -40,6 +43,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                     />
                     <MenuItem 
                         text='Resume'
+                        scrollTo={320}
                         modelProps={{
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 

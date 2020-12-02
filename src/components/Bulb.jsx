@@ -2,8 +2,8 @@ const Bulb = ({ position = [0,0,0], visible = false }) => {
     return (
         <mesh position={position}>
             <pointLight castShadow 
-                // shadow-mapSize-width={1024/4}
-                // shadow-mapSize-height={1024/4}
+                // shadow-mapSize-width={1024*10}
+                // shadow-mapSize-height={1024*10}
                 shadow-camera-far={75}
                 shadow-camera-left={-10}
                 shadow-camera-right={10}

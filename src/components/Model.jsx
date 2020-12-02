@@ -18,7 +18,11 @@ const Model = ({
 
     for (const key in model.nodes) {
         const mesh = model.nodes[key]
-        if (mesh) mesh.castShadow = true
+        if (mesh && mesh.type === 'Mesh') {
+            mesh.castShadow = true
+            mesh.receiveShadow = true
+            mesh.material.side = THREE.FrontSide
+        }
     }
     
     return (

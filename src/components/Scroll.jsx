@@ -1,6 +1,7 @@
 import state from '../state'
 
 const Scroll = ({ pages = 1, children }) => {
+    let friction = 16
     const handleTouchStart = e => {
         state.touchY = e.touches.item(0).pageY
     }
@@ -11,7 +12,12 @@ const Scroll = ({ pages = 1, children }) => {
         state.touchY = touchY
     }
     const handleWheel = e => {
-        const delta = e.nativeEvent.deltaY / 16
+        if (
+            state.top > 75 && state.top < 83
+        ) friction = 15
+        else friction = 0.4
+        let delta = 1/friction
+        if (e.nativeEvent.deltaY < 0) delta *= -1
         if (delta < 0)
             state.top = Math.max(state.top + delta, 0)
         else
