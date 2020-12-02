@@ -1,12 +1,12 @@
 import { Flex, Box } from '@react-three/flex';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, Suspense } from 'react';
 import { useFrame, useThree } from 'react-three-fiber';
 import { useAspect } from '@react-three/drei'
 import state from '../state';
 import * as THREE from 'three';
 import Text from './Text';
 import AboutMenuItem from './AboutMenuItem'
-
+import Model from './Model'
 const Layout = () => {
     const groupRef = useRef()
     const vec = new THREE.Vector3()
@@ -49,6 +49,13 @@ const Layout = () => {
                 <planeBufferGeometry args={[vpWidth+50,vpHeight+50]} />
                 <meshPhysicalMaterial color='aquamarine' />
             </mesh>
+            <Suspense fallback={null}>
+                <Model
+                    path='/lowpoly_earth/scene.gltf'
+                    scale={new Array(3).fill(0.04)}
+                    position={[0,0,-40]}
+                />
+            </Suspense>
         </group>
     )
 }

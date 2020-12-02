@@ -5,9 +5,8 @@ import Layout from './components/Layout';
 import { softShadows, Html } from '@react-three/drei'
 import Header from './components/Header'
 import state from './state'
-import Model from './components/Model'
 
-softShadows()
+// softShadows()
 function App() {
 
   const handleTouchStart = e => {
@@ -28,6 +27,7 @@ function App() {
     else
       state.top = Math.min(state.top + delta,80)
   }
+
   return (
     <div 
       style={{ 
@@ -50,12 +50,6 @@ function App() {
         <Suspense fallback={<Html center><h1 style={{color: 'black', fontSize: 100}}>Loading...</h1></Html>}>
           <Header />
           <Layout />
-          <Suspense fallback={null}>
-            {/* <Model 
-              path='/lowpoly_earthv2/scene.gltf'
-              scale={[new Array(3).fill(0.1)]}
-            /> */}
-          </Suspense>
         </Suspense>
       </Canvas> 
     </div>

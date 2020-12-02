@@ -1,10 +1,12 @@
 import { Box } from '@react-three/flex'
-import { useFrame } from 'react-three-fiber'
-import { useRef } from 'react'
+import { useFrame, useThree } from 'react-three-fiber'
+import { Suspense, useRef } from 'react'
 import Text from './Text'
 import * as THREE from 'three'
+import Model from './Model'
 
 const AboutMenuItem = props => {
+    const { scene } = useThree()
     const ref = useRef()
     const sphereRef = useRef()
     const t = Math.random()*Math.PI
@@ -38,13 +40,12 @@ const AboutMenuItem = props => {
                         <sphereBufferGeometry args={[6,100,100]} />
                         <meshPhysicalMaterial side={THREE.DoubleSide} transparent transmission={0.9} clearcoat={1} reflectivity={1} roughness={0}/>
                     </mesh>
-                    <Text color='red' size={1.5} position={[0,0,2]} >
-                        ?
-                    </Text>
-                    <mesh castShadow receiveShadow>
-                        <sphereBufferGeometry args={[2, 100, 100]}/>
-                        <meshPhysicalMaterial /> 
-                    </mesh>
+                    <Suspense fallback={null}>
+                        <Model
+                            path='/lowpoly_earth/scene.gltf'
+                            scale={new Array(3).fill(0.02)}
+                        />
+                    </Suspense>
                 </group>
                 <Text position={[0,-3,0]}>
                     About

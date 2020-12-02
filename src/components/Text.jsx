@@ -11,9 +11,9 @@ const Text = ({
     color = "#000000",
     ...props
 }) => {
-    const font = new THREE.Font(data.default)
-    const config = useMemo(
-        () => ({
+    const config = useMemo(() => {
+        const font = new THREE.Font(data.default)
+        return({
             font,
             size: 16,
             height: 2,
@@ -23,9 +23,8 @@ const Text = ({
             // bevelSize: 1,
             // bevelOffset: 0,
             // bevelSegments: 8,
-        }),
-        [font]
-    )
+        })
+    }, [])
     const mesh = useUpdate(
         (self) => {
             const size = new THREE.Vector3()
