@@ -1,5 +1,5 @@
 import { Flex, Box } from '@react-three/flex'
-import AboutMenuItem from './AboutMenuItem'
+import MenuItem from './MenuItem'
 
 const Menu = ({ width = 100, height = 50 }) => {
     return(
@@ -17,10 +17,34 @@ const Menu = ({ width = 100, height = 50 }) => {
                     wrap='wrap'
                     justify='space-around'
                 >
-                    <AboutMenuItem />
-                    <AboutMenuItem />
-                    <AboutMenuItem />
-                    <AboutMenuItem />
+                    <MenuItem 
+                        text='About'
+                        modelProps={{
+                            path:'/lowpoly_earth/scene.gltf',
+                            scale: new Array(3).fill(0.02) 
+                        }}
+                    />
+                    <MenuItem 
+                        text='Projects'
+                        modelProps={{
+                            path:'/lowpoly_earth/scene.gltf',
+                            scale: new Array(3).fill(0.02) 
+                        }}
+                    />
+                    <MenuItem 
+                        text='Contact'
+                        modelProps={{
+                            path:'/lowpoly_earth/scene.gltf',
+                            scale: new Array(3).fill(0.02) 
+                        }}
+                    />
+                    <MenuItem 
+                        text='Resume'
+                        modelProps={{
+                            path:'/lowpoly_earth/scene.gltf',
+                            scale: new Array(3).fill(0.02) 
+                        }}
+                    />
                 </Box>
             </Flex>
             <mesh position={[0, 0, 0.01]} receiveShadow >

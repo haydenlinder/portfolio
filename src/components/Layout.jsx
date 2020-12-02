@@ -4,9 +4,6 @@ import { useFrame, useThree } from 'react-three-fiber';
 import { useAspect } from '@react-three/drei'
 import state from '../state';
 import * as THREE from 'three';
-import Text from './Text';
-import AboutMenuItem from './AboutMenuItem'
-import Model from './Model';
 import Menu from './Menu'
 import About from './About'
 

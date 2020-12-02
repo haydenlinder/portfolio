@@ -1,13 +1,19 @@
 import { Box } from '@react-three/flex'
-import { useFrame, useThree } from 'react-three-fiber'
+import { useFrame } from 'react-three-fiber'
 import { Suspense, useRef } from 'react'
 import Text from './Text'
 import * as THREE from 'three'
 import Model from './Model'
 import state from '../state'
 
-const AboutMenuItem = props => {
-    const { scene } = useThree()
+const MenuItem = ({ 
+    text, 
+    scrollTo = 80,
+    modelProps = {
+        path: '',
+        scale: [1,1,1]
+    } 
+}) => {
     const ref = useRef()
     const sphereRef = useRef()
     const t = Math.random()*Math.PI
@@ -37,7 +43,7 @@ const AboutMenuItem = props => {
         e.object.isPointerDown = true
     }
     const handlePointerUp = e => {
-        if (e.object.isPointerDown) state.top = 80
+        if (e.object.isPointerDown) state.top = scrollTo
         e.object.isPointerDown = false
     }
 
@@ -63,17 +69,17 @@ const AboutMenuItem = props => {
                     </mesh>
                     <Suspense fallback={null}>
                         <Model
-                            path='/lowpoly_earth/scene.gltf'
-                            scale={new Array(3).fill(0.02)}
+                            path={modelProps.path}
+                            scale={modelProps.scale}
                         />
                     </Suspense>
                 </group>
                 <Text position={[0,-3,0]}>
-                    About
+                    {text}
                 </Text>
             </Box>
         </group>
     )
 }
 
-export default AboutMenuItem
+export default MenuItem
