@@ -8,13 +8,17 @@ import Text from './Text';
 import AboutMenuItem from './AboutMenuItem'
 import Model from './Model';
 import Menu from './Menu'
+import About from './About'
 
 const Layout = () => {
     const groupRef = useRef()
     const vec = new THREE.Vector3()
     useEffect(() => {
         window.scrollTo(0, 1)
-        groupRef.current.position.lerp(vec.set(0,0,20),1)
+        groupRef.current.position.lerp(
+            vec.set(0,0,20),
+            1
+        )
     })
     useFrame(three => {
         window.state = three
@@ -31,21 +35,7 @@ const Layout = () => {
     return (
         <group ref={groupRef}>
             <Menu width={width} height={vpHeight}/>
-            <mesh position={[0, 0, 0.01]} receiveShadow >
-                <planeBufferGeometry args={[vpWidth+5,vpHeight+5]} />
-                <meshPhysicalMaterial color='white' />
-            </mesh>
-            <mesh position={[0, 0, -80]} receiveShadow >
-                <planeBufferGeometry args={[vpWidth+50,vpHeight+50]} />
-                <meshPhysicalMaterial color='aquamarine' />
-            </mesh>
-            <Suspense fallback={null}>
-                <Model
-                    path='/lowpoly_earth/scene.gltf'
-                    scale={new Array(3).fill(0.04)}
-                    position={[0,0,-40]}
-                />
-            </Suspense>
+            <About />
         </group>
     )
 }

@@ -4,40 +4,13 @@ import Bulb from './components/Bulb';
 import Layout from './components/Layout';
 import { softShadows, Html } from '@react-three/drei'
 import Header from './components/Header'
-import state from './state'
+
+import Scroll from './components/Scroll'
 
 softShadows()
 function App() {
-
-  const handleTouchStart = e => {
-    state.touchY = e.touches.item(0).pageY
-  }
-
-  const handleTouchMove = e => {
-    const touchY = e.touches.item(0).pageY
-    const event = { nativeEvent: { deltaY: 16*(state.touchY - touchY) } }
-    handleScroll(event)
-    state.touchY = touchY
-  }
-
-  const handleScroll = e => {
-    const delta = e.nativeEvent.deltaY/16
-    if (delta < 0)
-      state.top = Math.max(state.top + delta,0)
-    else
-      state.top = Math.min(state.top + delta,80)
-  }
-
   return (
-    <div 
-      style={{ 
-        height: '101vh', 
-        width: '100vw',
-      }}
-      onWheel={handleScroll}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-    >
+    <Scroll pages={4}>
       <Canvas 
         concurrent
         camera={ { position: [0,0,50] } }
@@ -46,13 +19,13 @@ function App() {
       >
         <axesHelper args={[5]}/>
         <ambientLight intensity={0.3}/>
-        <Bulb position={[0, 10, 20]} />
+        <Bulb position={[0, 10, 50]} />
         <Suspense fallback={<Html center><h1 style={{color: 'black', fontSize: 100}}>Loading...</h1></Html>}>
           <Header />
           <Layout />
         </Suspense>
       </Canvas> 
-    </div>
+    </Scroll>
   );
 }
 

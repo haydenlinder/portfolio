@@ -17,6 +17,20 @@ const Header = props => {
         if (state.top === 0) menuRef.current.position.lerp(vec.set(0,0,-5), 0.1)
         else menuRef.current.position.lerp(vec.set(0,0,0), 0.1)
     })
+    const handlePointerEnter = e => {
+        e.object.scale.lerp(vec.set(1.1, 1.1, 1.1), 1)
+    }
+    const handlePointerLeave = e => {
+        e.object.scale.lerp(vec.set(1, 1, 1), 1)
+        e.object.isPointerDown = false
+    }
+    const handlePointerDown = e => {
+        e.object.isPointerDown = true
+    }
+    const handlePointerUp = e => {
+        if (e.object.isPointerDown) state.top = 0
+        e.object.isPointerDown = false
+    }
     return (
         <Flex 
             size={[width]}
@@ -43,9 +57,10 @@ const Header = props => {
                 <mesh 
                     ref={menuRef}
                     castShadow receiveShadow
-                    onPointerDown={e => state.top = 0} 
-                    onPointerEnter={e => e.object.scale.lerp(new THREE.Vector3(1.1,1.1,1.1),1)}
-                    onPointerLeave={e => e.object.scale.lerp(new THREE.Vector3(1,1,1),1)}
+                    onPointerEnter={handlePointerEnter}
+                    onPointerLeave={handlePointerLeave}
+                    onPointerDown={handlePointerDown}
+                    onPointerUp={handlePointerUp}
                 >
                     <boxBufferGeometry args={[10,4,0.5]}/>
                     <meshPhysicalMaterial color='blue'/>

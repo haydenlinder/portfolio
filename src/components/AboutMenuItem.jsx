@@ -4,6 +4,7 @@ import { Suspense, useRef } from 'react'
 import Text from './Text'
 import * as THREE from 'three'
 import Model from './Model'
+import state from '../state'
 
 const AboutMenuItem = props => {
     const { scene } = useThree()
@@ -12,14 +13,14 @@ const AboutMenuItem = props => {
     const t = Math.random()*Math.PI
     useFrame(({ clock }) => {
         sphereRef.current.rotation.y -= 0.05
-        ref.current.position.y += 0.04*Math.sin(2*clock.getElapsedTime() + t)
-        
-        switch (ref.current.hover) {
+        const { current } = ref
+        current.position.y += 0.04*Math.sin(2*clock.getElapsedTime() + t)
+        switch (current.hover) {
             case 1:
-                ref.current.position.lerp({ x: 0, y:0, z:10 }, 0.02)
+                current.position.lerp({ x: 0, y:0, z:10 }, 0.02)
             case 2:
-                ref.current.position.lerp({ x: 0, y:0, z:0 }, 0.02)
-                if (ref.current.position.y === 0) ref.current.hover = 0
+                current.position.lerp({ x: 0, y:0, z:0 }, 0.02)
+                if (current.position.y === 0) current.hover = 0
             default: 
                 break
         } 
@@ -30,13 +31,33 @@ const AboutMenuItem = props => {
     }
     const handlePointerLeave = e => {
         ref.current.hover = 2
+        e.object.isPointerDown = false
+    }
+    const handlePointerDown = e => {
+        e.object.isPointerDown = true
+    }
+    const handlePointerUp = e => {
+        if (e.object.isPointerDown) state.top = 80
+        e.object.isPointerDown = false
     }
 
     return (
         <group ref={ref} >
-            <Box centerAnchor align='center' mr={1} grow={1}>
+            <Box 
+                centerAnchor 
+                align='center'
+                justify='center' 
+                m={1} 
+                grow={1}
+            >
                 <group ref={sphereRef}>
-                    <mesh position={[0, -1, 0]} onPointerEnter={handlePointerEnter} onPointerLeave={handlePointerLeave}>
+                    <mesh 
+                        position={[0, -1, 0]} 
+                        onPointerEnter={handlePointerEnter} 
+                        onPointerLeave={handlePointerLeave}
+                        onPointerDown={handlePointerDown} 
+                        onPointerUp={handlePointerUp}
+                    >
                         <sphereBufferGeometry args={[6,100,100]} />
                         <meshPhysicalMaterial side={THREE.DoubleSide} transparent transmission={0.9} clearcoat={1} reflectivity={1} roughness={0}/>
                     </mesh>
