@@ -39,7 +39,7 @@ const Text = ({
         <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
             <mesh ref={mesh} castShadow receiveShadow>
                 <textGeometry args={[children, config]} />
-                <meshPhysicalMaterial color={color} clearcoat={1}/>
+                <meshPhysicalMaterial color={color} />
             </mesh>
         </group>
     )
