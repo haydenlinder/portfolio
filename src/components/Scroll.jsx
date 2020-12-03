@@ -12,10 +12,11 @@ const Scroll = ({ pages = 1, children }) => {
     }
     let friction = 1
     const handleWheel = e => {
-        if (state.top > 70 && state.top < 83) friction = 10
-        else if (state.top > 75 && state.top < 80) friction = 20
-        else friction = 0.2
-        let delta = 1/friction
+        if (state.top > 70 && state.top < 83) friction = 20
+        else if (state.top > 75 && state.top < 80) friction = 30
+        else friction = 1
+        let delta = Math.min(Math.abs(e.nativeEvent.deltaY), 5)
+        delta /= friction
         if (e.nativeEvent.deltaY < 0) delta *= -1
         if (delta < 0)
             state.top = Math.max(state.top + delta, 0)
