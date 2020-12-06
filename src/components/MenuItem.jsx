@@ -7,6 +7,7 @@ import Model from './Model'
 import state from '../state'
 
 const MenuItem = ({ 
+    spin = true,
     text, 
     scrollTo = 80,
     modelProps = {
@@ -18,7 +19,7 @@ const MenuItem = ({
     const sphereRef = useRef()
     const t = Math.random()*6.28
     useFrame(({ clock }) => {
-        sphereRef.current.rotation.y -= 0.05
+        if (spin) sphereRef.current.rotation.y -= 0.05
         const { current } = ref
         current.position.y += 0.04*Math.sin(2*clock.getElapsedTime() + t)
         switch (current.hover) {
@@ -71,10 +72,7 @@ const MenuItem = ({
                         <meshPhysicalMaterial side={THREE.DoubleSide} transparent transmission={0.9} clearcoat={1} reflectivity={1} roughness={0}/>
                     </mesh>
                     <Suspense fallback={null}>
-                        <Model
-                            path={modelProps.path}
-                            scale={modelProps.scale}
-                        />
+                        <Model {...modelProps} />
                     </Suspense>
                 </group>
                 <Text position={[0,-3,0]}>

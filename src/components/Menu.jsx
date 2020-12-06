@@ -34,19 +34,21 @@ const Menu = ({ width = 100, height = 50 }) => {
                         }}
                     />
                     <MenuItem 
-                        text='Contact'
-                        scrollTo={240}
+                        text='Resume'
+                        scrollTo={320}
                         modelProps={{
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 
                         }}
                     />
                     <MenuItem 
-                        text='Resume'
-                        scrollTo={320}
+                        text='Contact'
+                        scrollTo={240}
+                        spin={false}
                         modelProps={{
-                            path:'/lowpoly_earth/scene.gltf',
-                            scale: new Array(3).fill(0.02) 
+                            path:'/rotary_phone/scene.gltf',
+                            scale: new Array(3).fill(1),
+                            position: [0,-1,0]
                         }}
                     />
                 </Box>
