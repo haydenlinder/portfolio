@@ -12,6 +12,9 @@ const Scroll = ({ pages = 1, children }) => {
     }
     let friction = 1
     const handleWheel = e => {
+        if (state.top === 0) document.getElementById('menu-button').style.display = 'none'
+        else document.getElementById('menu-button').style.display = 'block'
+        
         if (state.top > 70 && state.top < 83) friction = 20
         else if (state.top > 75 && state.top < 80) friction = 30
         else friction = 1

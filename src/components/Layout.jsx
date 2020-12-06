@@ -12,11 +12,14 @@ const Layout = () => {
     const vec = new THREE.Vector3()
     useEffect(() => {
         window.scrollTo(0, 1)
+    })
+    useEffect(() => {
         groupRef.current.position.lerp(
             vec.set(0,0,20),
             1
         )
-    })
+
+    },[])
     useFrame(three => {
         window.state = three
         groupRef.current.position.lerp(

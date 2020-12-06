@@ -11,6 +11,7 @@ softShadows()
 function App() {
   return (
     <Scroll pages={4}>
+      <Header />
       <Canvas 
         concurrent
         camera={ { position: [0,0,50] } }
@@ -21,7 +22,6 @@ function App() {
         <ambientLight intensity={0.3}/>
         <Bulb position={[0, 10, 50]} />
         <Suspense fallback={<Html center><h1 style={{color: 'black', fontSize: 100}}>Loading...</h1></Html>}>
-          <Header />
           <Layout />
         </Suspense>
       </Canvas> 

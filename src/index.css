@@ -20,7 +20,12 @@ body,
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  color: white;
+  box-sizing: border-box;
+  /* color: white; */
+}
+
+#root * {
+  box-sizing: border-box;
 }
 
 #root {
