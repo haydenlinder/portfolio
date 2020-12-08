@@ -8,6 +8,7 @@ const Text = ({
     vAlign = "center",
     hAlign = "center",
     size = 1,
+    thickness = 2,
     color = "#000000",
     ...props
 }) => {
@@ -16,7 +17,7 @@ const Text = ({
         return({
             font,
             size: 16,
-            height: 2,
+            height: thickness,
             curveSegments: 64,
             // bevelEnabled: true,
             bevelThickness: 3,
@@ -37,7 +38,7 @@ const Text = ({
     )
     return (
         <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
-            <mesh ref={mesh} castShadow receiveShadow>
+            <mesh ref={mesh} >
                 <textGeometry args={[children, config]} />
                 <meshPhysicalMaterial color={color} />
             </mesh>

@@ -37,3 +37,11 @@ body,
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+.btn {
+  cursor: pointer;
+  padding: '10px';
+  border: '1px solid black';
+  border-radius: '10px';
+  cursor: 'pointer';
+}

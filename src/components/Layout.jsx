@@ -1,5 +1,5 @@
 import { Flex, Box } from '@react-three/flex';
-import { useRef, useEffect, Suspense } from 'react';
+import { useRef, useEffect } from 'react';
 import { useFrame, useThree } from 'react-three-fiber';
 import { useAspect } from '@react-three/drei'
 import state from '../state';

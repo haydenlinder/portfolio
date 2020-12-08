@@ -1,11 +1,4 @@
-import { useThree, useFrame } from 'react-three-fiber';
-import { useAspect } from '@react-three/drei';
-import Text from './Text';
-import { Box, Flex } from '@react-three/flex';
 import state from '../state'
-import * as THREE from 'three'
-import Bulb from './Bulb';
-import { useRef } from 'react'
 
 const Header = props => {
     const handleClick = e => {
@@ -63,7 +56,7 @@ const Header = props => {
                     style={{
                         padding: '10px',
                         border: '1px solid black',
-                        borderRadius: '10px',
+                        borderRadius: 10,
                         cursor: 'pointer',
                         right: '20px',
                         position: 'absolute',
