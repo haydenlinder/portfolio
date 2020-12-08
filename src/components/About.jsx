@@ -32,7 +32,7 @@ const About = ({ }) => {
                 <planeBufferGeometry args={[999, 999]} />
                 <meshPhysicalMaterial color='aquamarine' />
             </mesh>
-            <Html center position={[0, 2, -40]} scaleFactor={10} zIndexRange={[0,0]}>
+            <Html center position={[0, 1.5, -40]} scaleFactor={10} zIndexRange={[0,0]}>
                 <div ref={textRef} id='about-text' style={{ display: 'flex', fontSize: 30, textAlign: 'center', width: '100vw', flexDirection: 'column', alignItems: 'center' }}>
                     <div>
                         I love JavaScript, cooking, skateboaring, and music.

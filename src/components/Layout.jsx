@@ -6,6 +6,7 @@ import state from '../state';
 import * as THREE from 'three';
 import Menu from './Menu'
 import About from './About'
+import Header from './Header';
 
 const Layout = () => {
     const groupRef = useRef()
