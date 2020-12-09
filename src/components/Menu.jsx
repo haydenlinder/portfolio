@@ -15,7 +15,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                     height='auto'
                     dir='row'
                     wrap='wrap'
-                    justify='space-around'
+                    justify='center'
                 >
                     <MenuItem 
                         text='About'
@@ -47,13 +47,13 @@ const Menu = ({ width = 100, height = 50 }) => {
                         spin={false}
                         modelProps={{
                             path:'/rotary_phone/scene.gltf',
-                            scale: new Array(3).fill(1),
-                            position: [0,-1,0]
+                            scale: new Array(3).fill(0.8),
+                            position: [0,-1.4,0]
                         }}
                     />
                 </Box>
             </Flex>
-            <mesh position={[0, 0, 0.01]} receiveShadow >
+            <mesh position={[0, 0, 0.01]} >
                 <planeBufferGeometry args={[999,999]} />
                 <meshPhysicalMaterial color='white' />
             </mesh>

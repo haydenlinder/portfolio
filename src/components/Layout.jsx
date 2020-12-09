@@ -6,7 +6,7 @@ import state from '../state';
 import * as THREE from 'three';
 import Menu from './Menu'
 import About from './About'
-import Header from './Header';
+import Projects from './Projects'
 
 const Layout = () => {
     const groupRef = useRef()
@@ -37,6 +37,7 @@ const Layout = () => {
         <group ref={groupRef}>
             <Menu width={width} height={vpHeight}/>
             <About />
+            <Projects />
         </group>
     )
 }

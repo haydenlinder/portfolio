@@ -27,13 +27,13 @@ const About = ({ }) => {
     }
 
     return (
-        <>
-            <mesh position={[0, 0, -80]} receiveShadow >
+        <group position={[0, 0, -80]}>
+            <mesh  receiveShadow >
                 <planeBufferGeometry args={[999, 999]} />
                 <meshPhysicalMaterial color='aquamarine' />
             </mesh>
-            <Html center position={[0, 1.5, -40]} scaleFactor={10} zIndexRange={[0,0]}>
-                <div ref={textRef} id='about-text' style={{ display: 'flex', fontSize: 30, textAlign: 'center', width: '100vw', flexDirection: 'column', alignItems: 'center' }}>
+            <Html center position={[0, 1.5, 40]} scaleFactor={10} zIndexRange={[0,0]}>
+                <div ref={textRef} style={{ display: 'flex', fontSize: 30, textAlign: 'center', width: '100vw', flexDirection: 'column', alignItems: 'center' }}>
                     <div>
                         I love JavaScript, cooking, skateboaring, and music.
                     </div>
@@ -44,8 +44,7 @@ const About = ({ }) => {
                     <br/>
                     <div 
                         onClick={handleClick}
-                        className='btn' 
-                        style={{padding: 10, paddingRight: 30, paddingLeft: 30, border: '1px solid black', fontWeight: 'bold', borderRadius: 10, background: 'rgb(255,255,255, 0.4)', width: 'fit-content'}}
+                        style={{padding: 10, paddingRight: 30, paddingLeft: 30, border: '1px solid black', fontWeight: 'bold', borderRadius: 10, background: 'rgb(255,255,255, 0.4)', width: 'fit-content', cursor: 'pointer'}}
                     >
                         See my projects
                     </div>
@@ -53,7 +52,7 @@ const About = ({ }) => {
             </Html>
             <group 
                 ref={modelRef} 
-                position={[0, -5, -40]}
+                position={[0, -4.5, 40]}
                 rotation={[0.1,4.4,0]}
             >
                 <group position={[3, 2, -1]} rotation={[0, 1.9, 0]}>
@@ -77,7 +76,7 @@ const About = ({ }) => {
                     />
                 </group>
             </group>
-        </>
+        </group>
     )
 }
 

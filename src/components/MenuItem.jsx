@@ -1,7 +1,7 @@
 import { Box } from '@react-three/flex'
 import { useFrame } from 'react-three-fiber'
 import { useRef } from 'react'
-import { Html } from '@react-three/drei'
+import { Html, Plane } from '@react-three/drei'
 import Text from './Text'
 import * as THREE from 'three'
 import Model from './Model'
@@ -17,23 +17,20 @@ const MenuItem = ({
     } 
 }) => {
     const sphereRef = useRef()
-
-    useFrame(({ clock }) => {
-        // const { current } = sphereRef
-
-        // if (spin) sphereRef.current.rotation.y -= 0.05
-        if (sphereRef.current.isHovered) 
-            sphereRef.current.position.lerp({ x: 0, y:0, z:10 }, 0.02)
-        else
-            sphereRef.current.position.lerp({ x: 0, y:0, z:0 }, 0.02)
-    });
+    const boxRef = useRef()
 
     const handlePointerEnter = e => {
         sphereRef.current.isHovered = true
+        boxRef.current.children.forEach(child => { 
+            if (child.isMesh) child.material.opacity = 1
+        })
     }
     const handlePointerLeave = e => {
         sphereRef.current.isHovered = false
         sphereRef.current.isPointerDown = false
+        boxRef.current.children.forEach(child => {
+            if (child.isMesh) child.material.opacity = 0.7
+        })
     }
     const handlePointerDown = e => {
         sphereRef.current.isPointerDown = true
@@ -57,25 +54,32 @@ const MenuItem = ({
         >
             <Box 
                 centerAnchor 
-                // align='center'
-                // justify='center' 
-                mt={1} 
-                mb={1} 
-                grow={1}
             >
-                <mesh 
-                    position={[0, -1, 0]} 
-                >
-                    <sphereBufferGeometry args={[6,100,100]} />
-                    <meshPhysicalMaterial side={THREE.DoubleSide} transparent transmission={0.9} />
-                </mesh>
+                <group ref={boxRef}>
+                    <Plane args={[12,12]}  receiveShadow>
+                        <meshPhysicalMaterial transparent opacity={0.7} />
+                    </Plane> 
+                    <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,6,6]} receiveShadow>
+                        <meshPhysicalMaterial transparent opacity={0.7} />
+                    </Plane> 
+                    <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,-6,6]} receiveShadow>
+                        <meshPhysicalMaterial transparent opacity={0.7} side={THREE.BackSide}/>
+                    </Plane> 
+                    <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[-6,0,6]} receiveShadow>
+                        <meshPhysicalMaterial transparent opacity={0.7} />
+                    </Plane> 
+                    <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[6,0,6]} receiveShadow>
+                        <meshPhysicalMaterial transparent opacity={0.7} side={THREE.BackSide}/>
+                    </Plane> 
+                </group>
                 <group 
+                    position={[0,0,6]}
                 >
                     <Model {...modelProps} />
+                    <Text position={[0,-3,0]}>
+                        {text}
+                    </Text>
                 </group>
-                <Text position={[0,-3,0]}>
-                    {text}
-                </Text>
             </Box>
         </group>
     )
