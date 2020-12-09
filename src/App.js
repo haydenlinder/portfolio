@@ -16,14 +16,13 @@ function App() {
         colorManagement
         shadowMap
       >
-        <Suspense fallback={null}>
+        <Suspense fallback={<Html><Loader dataStyles={{color: 'black'}} barStyles={{border: '1px solid black', background: 'black'}} innerStyles={{background: 'white'}}/></Html>}>
           <ambientLight intensity={0.3}/>
           <Bulb position={[-10, 0, 50]} />
           <Header />
           <Layout />
         </Suspense>
       </Canvas> 
-      <Loader />
     </Scroll>
   );
 }
