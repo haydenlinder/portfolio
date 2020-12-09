@@ -50,12 +50,11 @@ const MenuItem = ({
     return (
         <group 
             ref={sphereRef}
-            {...listeners}
         >
             <Box 
                 centerAnchor 
             >
-                <group ref={boxRef}>
+                <group ref={boxRef} {...listeners}>
                     <Plane args={[12,12]}  receiveShadow>
                         <meshPhysicalMaterial transparent opacity={0.7} />
                     </Plane> 

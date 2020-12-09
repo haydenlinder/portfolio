@@ -18,51 +18,45 @@ const Header = props => {
     const { size } = useThree();
     const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
     return (
-        <Html center position={[0,vpHeight/2-3,0]}>
+        <Html center position={[0,vpHeight/2-4,0]}>
             <header
                 style={{
+                    background: '#e7e7e7',
                     zIndex: 1,
-                    background: 'white',
-                    height: 0,
-                    width: '80vw',
+                    width: '100vw',
                     margin: 'auto',
-                    left: 0,
-                    right: 0,
-                    top: 0,
-                    paddingLeft: '10px',
-                    paddingRight: '100px',
-                    // position: 'absolute',
+                    padding: 10,
+                    paddingTop: 20,
+                    paddingBottom: 20,
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    maxWidth: '600px',
+                    justifyContent: 'center',
                     minWidth: '250px',
                 }}
                 >
                 <nav 
                     style={{
-                        position:'absolute',
-                        top: '20px',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        width: '80%',
+                        maxWidth: '600px',
                     }}
                     >
-                        <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <div style={{
-                                fontWeight: 'bold',
-                                fontSize: '20px',
-                            }}>
-                                Hayden Linder
-                            </div>
-                            <div>Web Developer</div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <div style={{
+                            fontWeight: 'bold',
+                            fontSize: '20px',
+                        }}>
+                            Hayden Linder
                         </div>
-                </nav>
-                <nav
-                >
+                        <div>Web Developer</div>
+                    </div>
                     <div
                         ref={menuRef}
                         style={{
@@ -71,8 +65,8 @@ const Header = props => {
                             borderRadius: 10,
                             cursor: 'pointer',
                             right: '20px',
-                            position: 'absolute',
-                            top: '20px',
+                            // position: 'absolute',
+                            // top: '20px',
                         }}
                         onClick={handleClick}
                     >
