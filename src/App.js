@@ -12,7 +12,7 @@ function App() {
     <Scroll pages={4}>
       <Canvas 
         concurrent
-        camera={ { position: [-0.2,0.1,50] } }
+        camera={ { position: [0,0,50] } }
         colorManagement
         shadowMap
       >

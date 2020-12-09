@@ -8,50 +8,71 @@ import * as THREE from 'three'
 import ProjectItem from './ProjectItem'
 
 const Projects = ({ }) => {
-    const modelRef = useRef()
     const textRef = useRef()
-    const vec = new THREE.Vector3()
+    const panRef = useRef()
+    const vec1 = new THREE.Vector3()
+    const vec2 = new THREE.Vector3()
     useFrame(() => {
+        vec1.lerp(vec2.set(0,state.pan,0), 0.1)
+        panRef.current.rotation.setFromVector3(vec1)
         const text = textRef.current
         if (state.top > 130 && text && text.style.display === 'none') text.style.display = 'flex'
         if (state.top < 130 && text && text.style.display === 'flex') text.style.display = 'none'
-        if (modelRef.current) {
-            modelRef.current.rotation.setFromVector3(
-                modelRef.current.rotation.toVector3()
-                    .lerp(vec.set(0.1, 6.28 * state.top / 80 + 4.4, 0), 0.1)
-            )
-        }
     })
 
     const handleClick = e => {
         state.top = 160
     }
 
+    const handlePan = num => {
+        state.pan += num*Math.PI/2
+    }
+
     return (
-        <group position={[0, 0, -160]}>
+        <group position={[0, 0, -160]} >
             <mesh receiveShadow >
                 <planeBufferGeometry args={[999, 999]} />
-                <meshPhysicalMaterial color='yellow' />
+                <meshPhysicalMaterial/>
             </mesh>
-            <Html center scaleFactor={10} zIndexRange={[0, 0]} position={[0,0.001,40]}>
-                <div ref={textRef} style={{ display: 'flex', fontSize: 30, textAlign: 'center', width: '100vw', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }} >
-                        <ProjectItem 
-                            title='Particles'
-                            description='An orbital physics simulator'
-                            link='https://haydenlinder.github.io/particles'
-                            path='/particles.png'
-                        />
-                        <ProjectItem 
-                            title='Abocabo'
-                            description='Find cheap produce near you'
-                            link='https://www.abocabo.com'
-                            path='/abocabo.png'
-                        />
+            <group position={[0,1,10]} ref={panRef}>
+                <ProjectItem
+                    title='Particles'
+                    description='An orbital physics simulator'
+                    link='https://haydenlinder.github.io/particles'
+                    path='/particles.png'
+                    position={[0, 0, 30]}
+                />
+                <ProjectItem
+                    title='Abocabo'
+                    description='Find cheap produce near you'
+                    link='https://www.abocabo.com'
+                    path='/abocabo.png'
+                    position={[30, 0, 0]}
+                />
+                <ProjectItem
+                    title='Tickets'
+                    description='A project management app featuring complex queries'
+                    link='https://ticats.herokuapp.com/'
+                    path='/tickets.png'
+                    position={[-30, 0, 0]}
+                />
+                <ProjectItem
+                    title='Tesla Paint Picker'
+                    description='The end result from an in-depth tutorial on Three.js and react-three-fiber.'
+                    link='https://haydenlinder.github.io/react-three-fiber/'
+                    path='/fiber.png'
+                    position={[0, 0, -30]}
+                />
+            </group>
+            <Html center position={[0, -5, 40]} scaleFactor={10}>
+                <div ref={textRef} style={{fontSize: 30, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
+                    <div style={{display: 'flex', justifyContent: 'space-between', fontSize: 100, width: 300}}>
+                        <div onClick={e => handlePan(1)} style={{cursor: 'pointer'}}>⇦</div>
+                        <div onClick={e => handlePan(-1)} style={{cursor: 'pointer'}}>⇨</div>
                     </div>
                     <div
                         onClick={handleClick}
-                        style={{ padding: 10, paddingRight: 30, paddingLeft: 30, border: '1px solid black', fontWeight: 'bold', borderRadius: 10, background: 'rgb(255,255,255, 0.4)', width: 'fit-content', cursor: 'pointer' }}
+                        style={{ padding: 10, paddingRight: 30, paddingLeft: 30, border: '1px solid black', fontWeight: 'bold', borderRadius: 10, background: 'rgb(255,255,255, 0.4)', minWidth: 300, cursor: 'pointer' }}
                     >
                         See my resume
                     </div>
