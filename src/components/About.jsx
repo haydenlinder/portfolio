@@ -39,7 +39,7 @@ const About = ({ }) => {
                     </div>
                     <br/>
                     <div>
-                        My background in 3D math gives me an inclination for graphics and computational geometry.
+                        My background in 3D math gives me an inclination for computational geometry.
                     </div>
                     <br/>
                     <div 

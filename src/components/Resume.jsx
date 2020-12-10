@@ -1,31 +1,18 @@
-import { useRef, useEffect } from 'react'
-import { useFrame, useThree, useLoader } from 'react-three-fiber' 
-import Effects from './Effects'
+import { useRef } from 'react'
+import { useFrame } from 'react-three-fiber' 
 import state from '../state'
-import Arrow from './Arrow'
-import { TextureLoader } from 'three'
+import ResumePaper from './ResumePaper'
+import { Html } from '@react-three/drei'
 
 const Resume = ({}) => {
-    const groupRef = useRef()
-    const paperRef = useRef()
-    const sunRef = useRef()
-    const texture = useLoader(TextureLoader, process.env.PUBLIC_URL + '/resume.png')
-    
     useFrame(() => {
-        const group = groupRef.current
-        const paper = paperRef.current
-        paper.rotation.y += 0.01
-        if (state.top >= 200 && !group.visible) group.visible = true
-        else if (state.top < 200 && group.visible) group.visible = false
+        const link = linkRef.current
+        if (state.top >= 120 && link.style.display === 'none') link.style.display = 'block'
+        if (state.top < 120 && link.style.display === 'block') link.style.display = 'none'
     })
-
-    const { scene } = useThree()
-    useEffect(() => {
-        scene.sun = sunRef.current
-    },[])
-    
+    const linkRef = useRef()
     return (
-        <group position={[0,0,-240]} visible={false} ref={groupRef} >
+        <group position={[0,0,-240]}>
             <mesh receiveShadow>
                 <planeBufferGeometry args={[999,999]}/>
                 <meshPhysicalMaterial color='white'/>
@@ -35,21 +22,20 @@ const Resume = ({}) => {
                     <boxBufferGeometry args={[1,1,1]}/>
                     <meshPhysicalMaterial />
                 </mesh>
-                <group position={[0, 1.5, 0]} ref={paperRef} scale={new Array(3).fill(1.3)}>
-                    <group position={[0, 0, -0.1]} rotation={[0, Math.PI, 0]}>
-                        <mesh castShadow >
-                            <planeBufferGeometry args={[0.7272,1]}/>
-                            <meshBasicMaterial map={texture}/>
-                        </mesh>
-                        <Arrow />
-                    </group>
-                    <group >
-                        <mesh receiveShadow castShadow>
-                            <planeBufferGeometry args={[0.7272,1]}/>
-                            <meshBasicMaterial map={texture}/>
-                        </mesh>
-                        <Arrow />
-                    </group>
+                <Html center position={[0,1.6,0]} scaleFactor={5}> 
+                    <a 
+                        ref={linkRef}
+                        href={process.env.PUBLIC_URL + '/hayden_linder_resume.pdf'} 
+                        download
+                        style={{
+                            height: 210,
+                            width: 140,
+                            display: 'none',
+                        }}
+                    ></a> 
+                </Html>
+                <group position={[0,1.5,0]}>
+                    <ResumePaper />
                 </group>
             </group>
         </group>

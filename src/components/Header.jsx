@@ -22,7 +22,7 @@ const Header = props => {
             <header
                 style={{
                     background: '#e7e7e7',
-                    zIndex: 1,
+                    zIndex: 999,
                     width: '100vw',
                     margin: 'auto',
                     padding: 10,

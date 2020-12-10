@@ -34,7 +34,7 @@ const Projects = ({ }) => {
                 <planeBufferGeometry args={[999, 999]} />
                 <meshPhysicalMaterial/>
             </mesh>
-            <group position={[0,1,10]} ref={panRef}>
+            <group position={[0,1,9]} ref={panRef}>
                 <ProjectItem
                     title='Particles'
                     description='An orbital physics simulator'
@@ -64,7 +64,7 @@ const Projects = ({ }) => {
                     position={[0, 0, -30]}
                 />
             </group>
-            <Html center position={[0, -5, 40]} scaleFactor={10}>
+            <Html center position={[0, -4, 40]} scaleFactor={10}>
                 <div ref={textRef} style={{fontSize: 30, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
                     <div style={{display: 'flex', justifyContent: 'space-between', fontSize: 100, width: 300}}>
                         <div onClick={e => handlePan(1)} style={{cursor: 'pointer'}}>⇦</div>

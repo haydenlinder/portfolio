@@ -8,7 +8,8 @@ import Model from './Model'
 import state from '../state'
 
 const MenuItem = ({ 
-    spin = true,
+    children,
+    spin = false,
     text, 
     scrollTo = 80,
     modelProps = {
@@ -18,7 +19,13 @@ const MenuItem = ({
 }) => {
     const sphereRef = useRef()
     const boxRef = useRef()
+    const modelRef = useRef()
 
+    useFrame(() => {
+        const model = modelRef.current
+        if (spin) model.rotation.y += 0.01
+    })
+    
     const handlePointerEnter = e => {
         sphereRef.current.isHovered = true
         boxRef.current.children.forEach(child => { 
@@ -74,7 +81,12 @@ const MenuItem = ({
                 <group 
                     position={[0,0,6]}
                 >
-                    <Model {...modelProps} />
+                    {children ? 
+                        children : 
+                        <group ref={modelRef}>
+                            <Model {...modelProps} />
+                        </group>
+                    }
                     <Text position={[0,-3,0]}>
                         {text}
                     </Text>

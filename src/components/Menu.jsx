@@ -1,5 +1,7 @@
 import { Flex, Box } from '@react-three/flex'
+import Atom from './Atom'
 import MenuItem from './MenuItem'
+import ResumePaper from './ResumePaper'
 
 const Menu = ({ width = 100, height = 50 }) => {
     return(
@@ -18,6 +20,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                     justify='center'
                 >
                     <MenuItem 
+                        spin={true}
                         text='About'
                         scrollTo={80}
                         modelProps={{
@@ -32,7 +35,11 @@ const Menu = ({ width = 100, height = 50 }) => {
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 
                         }}
-                    />
+                    >
+                        <group scale={new Array(3).fill(2)}>
+                            <Atom />
+                        </group>
+                    </MenuItem>
                     <MenuItem 
                         text='Resume'
                         scrollTo={240}
@@ -40,8 +47,12 @@ const Menu = ({ width = 100, height = 50 }) => {
                             path:'/lowpoly_earth/scene.gltf',
                             scale: new Array(3).fill(0.02) 
                         }}
-                    />
-                    <MenuItem 
+                    >
+                        <group scale={new Array(3).fill(4)} position={[0,0.5,0]}>
+                            <ResumePaper />
+                        </group>
+                    </MenuItem>
+                    {/* <MenuItem 
                         text='Contact'
                         scrollTo={320}
                         spin={false}
@@ -50,7 +61,7 @@ const Menu = ({ width = 100, height = 50 }) => {
                             scale: new Array(3).fill(0.8),
                             position: [0,-1.4,0]
                         }}
-                    />
+                    /> */}
                 </Box>
             </Flex>
             <mesh position={[0, 0, 0.01]} >

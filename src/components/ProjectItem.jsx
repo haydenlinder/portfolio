@@ -17,7 +17,7 @@ const ProjectItem = ({
         if (state.top < 130 && div && div.style.display === 'flex') div.style.display = 'none'
     })
     return (
-        <Html center scaleFactor={10} position={position}>       
+        <Html center scaleFactor={10} position={position} zIndexRange={[999,0]}>       
             <div ref={ref} style={{ display: 'flex', fontSize: 30, flexDirection: 'column', alignItems: 'center', margin: 10, textAlign: 'center'}}>
                 <div style={{fontWeight: 'bold'}}>{title}</div>
                 <div>{description}</div>
