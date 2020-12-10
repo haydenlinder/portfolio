@@ -9,14 +9,17 @@ import { Loader } from '@react-three/drei'
 
 function App() {
   return (
-    <Scroll pages={4}>
+    <Scroll pages={6}>
       <Canvas 
         concurrent
-        camera={ { position: [0,0,50] } }
+        camera={{ 
+          position: [0, 0, 50], 
+          far: 100 
+        }}
         colorManagement
         shadowMap
       >
-        <Suspense fallback={<Html><Loader dataStyles={{color: 'black'}} barStyles={{border: '1px solid black', background: 'black'}} innerStyles={{background: 'white'}}/></Html>}>
+        <Suspense fallback={<Html center><Loader dataStyles={{color: 'black'}} barStyles={{border: '1px solid black', background: 'black'}} innerStyles={{background: 'white'}}/></Html>}>
           <ambientLight intensity={0.3}/>
           <Bulb position={[-10, 0, 50]} />
           <Header />

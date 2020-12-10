@@ -21,7 +21,7 @@ const Projects = ({ }) => {
     })
 
     const handleClick = e => {
-        state.top = 160
+        state.top = 240
     }
 
     const handlePan = num => {

@@ -30,7 +30,7 @@ const About = ({ }) => {
         <group position={[0, 0, -80]}>
             <mesh  receiveShadow >
                 <planeBufferGeometry args={[999, 999]} />
-                <meshPhysicalMaterial color='aquamarine' />
+                <meshPhysicalMaterial color='white' />
             </mesh>
             <Html center position={[0, 1.5, 40]} scaleFactor={10} zIndexRange={[0,0]}>
                 <div ref={textRef} style={{ display: 'flex', fontSize: 30, textAlign: 'center', width: '100vw', flexDirection: 'column', alignItems: 'center' }}>

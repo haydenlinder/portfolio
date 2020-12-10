@@ -1,12 +1,13 @@
-import { Flex, Box } from '@react-three/flex';
-import { useRef, useEffect } from 'react';
-import { useFrame, useThree } from 'react-three-fiber';
+import { Flex, Box } from '@react-three/flex'
+import { useRef, useEffect } from 'react'
+import { useFrame, useThree } from 'react-three-fiber'
 import { useAspect } from '@react-three/drei'
-import state from '../state';
-import * as THREE from 'three';
+import state from '../state'
+import * as THREE from 'three'
 import Menu from './Menu'
 import About from './About'
 import Projects from './Projects'
+import Resume from './Resume'
 
 const Layout = () => {
     const groupRef = useRef()
@@ -38,6 +39,7 @@ const Layout = () => {
             <Menu width={width} height={vpHeight}/>
             <About />
             <Projects />
+            <Resume />
         </group>
     )
 }
