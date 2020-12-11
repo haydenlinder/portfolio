@@ -35,7 +35,7 @@ const About = ({ }) => {
             <Html center position={[0, 1.5, 40]} scaleFactor={10} zIndexRange={[0,0]}>
                 <div ref={textRef} style={{ display: 'flex', fontSize: 30, textAlign: 'center', width: '100vw', flexDirection: 'column', alignItems: 'center' }}>
                     <div>
-                        I love JavaScript, cooking, skateboaring, and music.
+                        I love JavaScript, cooking, skateboarding, and music.
                     </div>
                     <br/>
                     <div>
