@@ -9,7 +9,7 @@ import { Loader } from '@react-three/drei'
 
 function App() {
   return (
-    <Scroll pages={6}>
+    <Scroll pages={3} >
       <Canvas 
         concurrent
         camera={{ 

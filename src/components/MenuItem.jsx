@@ -55,11 +55,11 @@ const MenuItem = ({
     }
 
     return (
-        <group 
-            ref={sphereRef}
+        <Box 
+            centerAnchor 
         >
-            <Box 
-                centerAnchor 
+            <group 
+                ref={sphereRef}
             >
                 <group ref={boxRef} {...listeners}>
                     <Plane args={[12,12]}  receiveShadow>
@@ -91,8 +91,8 @@ const MenuItem = ({
                         {text}
                     </Text>
                 </group>
-            </Box>
-        </group>
+            </group>
+        </Box>
     )
 }
 

@@ -21,7 +21,6 @@ const Header = props => {
         <Html center position={[0,vpHeight/2-4,0]}>
             <header
                 style={{
-                    background: '#e7e7e7',
                     zIndex: 999,
                     width: '100vw',
                     margin: 'auto',
@@ -37,6 +36,7 @@ const Header = props => {
                 <nav 
                     style={{
                         display: 'flex',
+                        alignItems: 'center',
                         justifyContent: 'space-between',
                         width: '80%',
                         maxWidth: '600px',
@@ -46,7 +46,9 @@ const Header = props => {
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            background: 'white',
+                            padding: 10
                         }}
                     >
                         <div style={{
@@ -65,8 +67,8 @@ const Header = props => {
                             borderRadius: 10,
                             cursor: 'pointer',
                             right: '20px',
-                            // position: 'absolute',
-                            // top: '20px',
+                            background: 'white',
+                            height: 'fit-content'
                         }}
                         onClick={handleClick}
                     >

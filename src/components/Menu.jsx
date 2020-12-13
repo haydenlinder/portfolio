@@ -2,73 +2,65 @@ import { Flex, Box } from '@react-three/flex'
 import Atom from './Atom'
 import MenuItem from './MenuItem'
 import ResumePaper from './ResumePaper'
+import { useAspect } from '@react-three/drei'
+import { useThree } from 'react-three-fiber'
 
-const Menu = ({ width = 100, height = 50 }) => {
+const Menu = () => {
+    const { size } = useThree();
+    const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
     return(
-        <>
-            <Flex
-                justify='center'
+        <Box 
+            // m={2}
+            width='100%'
+            height='100%'
+            // dir='row'
+            // wrap='wrap'
+            align='center'
+            justify='center'
+        >
+            <Box
+                width='100%'
+                height='auto'
+                dir='row'
+                wrap='wrap'
                 align='center'
-                position={[-width / 2, height/2, 3]}
-                size={[width, height, 0]}
+                justify='center'
             >
-                <Box 
-                    width='auto'
-                    height='auto'
-                    dir='row'
-                    wrap='wrap'
-                    justify='center'
+                <MenuItem 
+                    spin={true}
+                    text='About'
+                    scrollTo={vpHeight}
+                    modelProps={{
+                        path:'/lowpoly_earth/scene.gltf',
+                        scale: new Array(3).fill(0.02) 
+                    }}
+                />
+                <MenuItem 
+                    text='Projects'
+                    scrollTo={vpHeight*2}
+                    modelProps={{
+                        path:'/lowpoly_earth/scene.gltf',
+                        scale: new Array(3).fill(0.02) 
+                    }}
                 >
-                    <MenuItem 
-                        spin={true}
-                        text='About'
-                        scrollTo={80}
-                        modelProps={{
-                            path:'/lowpoly_earth/scene.gltf',
-                            scale: new Array(3).fill(0.02) 
-                        }}
-                    />
-                    <MenuItem 
-                        text='Projects'
-                        scrollTo={160}
-                        modelProps={{
-                            path:'/lowpoly_earth/scene.gltf',
-                            scale: new Array(3).fill(0.02) 
-                        }}
-                    >
-                        <group scale={new Array(3).fill(2)}>
-                            <Atom />
-                        </group>
-                    </MenuItem>
-                    <MenuItem 
-                        text='Resume'
-                        scrollTo={240}
-                        modelProps={{
-                            path:'/lowpoly_earth/scene.gltf',
-                            scale: new Array(3).fill(0.02) 
-                        }}
-                    >
-                        <group scale={new Array(3).fill(4)} position={[0,0.5,0]}>
-                            <ResumePaper />
-                        </group>
-                    </MenuItem>
-                    {/* <MenuItem 
-                        text='Contact'
-                        scrollTo={320}
-                        spin={false}
-                        modelProps={{
-                            path:'/rotary_phone/scene.gltf',
-                            scale: new Array(3).fill(0.8),
-                            position: [0,-1.4,0]
-                        }}
-                    /> */}
-                </Box>
-            </Flex>
-            <mesh position={[0, 0, 0.01]} >
-                <planeBufferGeometry args={[999,999]} />
-                <meshPhysicalMaterial color='white' />
-            </mesh>
-        </>
+                    <group scale={new Array(3).fill(2)}>
+                        <Atom />
+                    </group>
+                </MenuItem>
+                <MenuItem 
+                    text='Resume'
+                    scrollTo={vpHeight * 3}
+                    modelProps={{
+                        path:'/lowpoly_earth/scene.gltf',
+                        scale: new Array(3).fill(0.02) 
+                    }}
+                >
+                    <group scale={new Array(3).fill(4)} position={[0,0.5,0]}>
+                        <ResumePaper />
+                    </group>
+                </MenuItem>
+            </Box>
+        </Box>
     )
 }
 
