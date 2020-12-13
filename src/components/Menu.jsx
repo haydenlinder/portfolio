@@ -10,11 +10,9 @@ const Menu = () => {
     const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
     return(
         <Box 
-            // m={2}
+            m={2}
             width='100%'
             height='100%'
-            // dir='row'
-            // wrap='wrap'
             align='center'
             justify='center'
         >
