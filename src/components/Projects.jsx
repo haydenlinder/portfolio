@@ -7,6 +7,7 @@ import Text from './Text'
 import * as THREE from 'three'
 import ProjectItem from './ProjectItem'
 import { Box } from '@react-three/flex'
+import Atom from './Atom'
 
 const Projects = ({ }) => {
     const panRef = useRef()
@@ -31,55 +32,16 @@ const Projects = ({ }) => {
             justify='center'
             height='100%'
         >
-            <Box 
+            <Box
+                height='20%'
                 centerAnchor
-                height='50%'
             >
-                <group position={[0,0,0]} ref={panRef} scale={[30,30,30]}>
-                    <mesh position={[0,-0.4,0]}>
-                        <cylinderBufferGeometry args={[1,1,0.1,100]}/>
-                        <meshPhysicalMaterial />
-                    </mesh>
-                    <ProjectItem
-                        title='Particles'
-                        description='An orbital physics simulator'
-                        link='https://haydenlinder.github.io/particles'
-                        path='/particles.png'
-                        position={[0, 0, 1]}
-                    />
-                    <ProjectItem
-                        title='Abocabo'
-                        description='Find cheap produce near you'
-                        link='https://www.abocabo.com'
-                        path='/abocabo.png'
-                        position={[1, 0, 0]}
-                    />
-                    <ProjectItem
-                        title='Tickets'
-                        description='A project management app featuring complex queries'
-                        link='https://ticats.herokuapp.com/'
-                        path='/tickets.png'
-                        position={[-1, 0, 0]}
-                    />
-                    <ProjectItem
-                        title='Tesla Paint Picker'
-                        description='The end result from an in-depth tutorial on Three.js and react-three-fiber.'
-                        link='https://haydenlinder.github.io/react-three-fiber/'
-                        path='/fiber.png'
-                        position={[0, 0, -1]}
-                    />
-                </group>
-            </Box>
-            <Box 
-                centerAnchor
-                height='10%'
-            >
-                <Html center position={[0, 0, 0]} zIndexRange={[0,10]}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center'}}>
-                        <div style={{display: 'flex', justifyContent: 'space-between', fontSize: 70, width: 300}}>
-                            <div onClick={e => handlePan(1)} style={{cursor: 'pointer'}}>⇦</div>
-                            <div onClick={e => handlePan(-1)} style={{cursor: 'pointer'}}>⇨</div>
-                        </div>
+                <Html center position={[0, 20, 0]} zIndexRange={[0, 10]}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                        <div>Here are some of my projects.</div>
+                        <br/>
+                        <div>Click on a model to view the project.</div>
+                        <br/>
                         <div
                             onClick={handleClick}
                             style={{ padding: 10, paddingRight: 30, paddingLeft: 30, border: '1px solid black', fontWeight: 'bold', borderRadius: 10, background: 'rgb(255,255,255, 0.4)', minWidth: 300, cursor: 'pointer' }}
@@ -88,6 +50,74 @@ const Projects = ({ }) => {
                         </div>
                     </div>
                 </Html>
+            </Box>
+            <Box
+                height='auto'
+                centerAnchor
+            >
+                <Html center position={[0, 5, 40]} zIndexRange={[999, 0]} scaleFactor={15}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 70, width: 200 }}>
+                            <div onClick={e => handlePan(1)} style={{ cursor: 'pointer', position: 'absolute', top: 0, left: -80 }}>⇦</div>
+                            <div onClick={e => handlePan(-1)} style={{ cursor: 'pointer', position: 'absolute', top: 0, right: -80 }}>⇨</div>
+                        </div>
+                    </div>
+                </Html>
+                <group ref={panRef} scale={new Array(3).fill(2)}>
+                    <mesh position={[0,-0.4,0]} receiveShadow>
+                        <cylinderBufferGeometry args={[20,20,0.1,100]}/>
+                        <meshPhysicalMaterial />
+                    </mesh>
+                    <group position={[0,1,17]} >
+                        <ProjectItem
+                            title='Particles'
+                            description='An orbital physics simulator.'
+                            link='https://haydenlinder.github.io/particles'
+                        />
+                        <group scale={[0.5,0.5,0.5]} position={[0,0.5,0]}>
+                            <Atom />
+                        </group>
+                    </group>
+                    <group position={[17, 1, 0]} >
+                        <ProjectItem
+                            title='Abocabo'
+                            description='Find cheap produce near you.'
+                            link='https://www.abocabo.com'
+                        />
+                        <Model 
+                            path='/avocado/scene.gltf' 
+                            scale={new Array(3).fill(0.05)} rotation={[0,Math.PI/3,0]}
+                            position={[0,0,0.4]}
+                        />
+                    </group>
+                    <group position={[-17, 1, 0]} >
+                        <ProjectItem
+                            title='Tickets'
+                            description='A project management app featuring complex queries.'
+                            link='https://ticats.herokuapp.com/'
+                        />
+                        <Model 
+                            path='/checkmark/scene.gltf'
+                            scale={new Array(3).fill(0.3)}
+                            rotation={[0,-Math.PI/2,0]}
+                            position={[0,0,-0.5]}
+                        />
+                    </group>
+                    <group position={[0, 1, -17]} >
+                        <ProjectItem
+                            title='Tesla Paint Picker'
+                            description='The end result from an in-depth tutorial on Three.js and react-three-fiber.'
+                            link='https://haydenlinder.github.io/react-three-fiber/'
+                        />
+                        <group position={[0,0.5,0]}>
+                            <Model 
+                                path='/tesla_model_3/scene.gltf'
+                                scale={new Array(3).fill(0.007)}
+                                rotation={[0,3*Math.PI/4,0]}
+                            />
+                        </group>
+                    </group>
+                </group>
             </Box>
         </Box>
     )

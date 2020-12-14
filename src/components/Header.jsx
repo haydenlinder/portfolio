@@ -47,8 +47,9 @@ const Header = props => {
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
-                            background: 'white',
-                            padding: 10
+                            background: 'rgb(255,255,255,0.5)',
+                            padding: 10,
+
                         }}
                     >
                         <div style={{

@@ -2,25 +2,36 @@ import { useFrame } from 'react-three-fiber'
 import { useRef } from 'react'
 import { Html } from '@react-three/drei'
 import state from '../state'
+import * as THREE from 'three'
 
 const ProjectItem = ({
     title = 'title',
     description = 'description',
     link = '#',
     path = '',
-    position = [0,0,0]
 }) => {
+    const vec = new THREE.Vector3()
+    const htmlRef = useRef()
+    const groupRef = useRef()
+    useFrame(() => {
+        if (groupRef.current.getWorldPosition(vec).z <= 10)
+            htmlRef.current.style.display = 'none'
+        else htmlRef.current.style.display = 'flex'
+    })
     return (
-        <Html center scaleFactor={20} position={position} zIndexRange={[999,0]}>       
-            <div style={{ display: 'flex', fontSize: 30, flexDirection: 'column', alignItems: 'center', margin: 10, textAlign: 'center'}}>
-                <div style={{fontWeight: 'bold'}}>{title}</div>
-                <div>{description}</div>
-                <br/>
-                <a style={{height: '50vh', width: 500, overflow: 'hidden', display: 'flex'}} href={link} target='_blank'>
-                    <img style={{objectFit: 'cover', minWidth: '100%', minHeight: '100%'}} src={process.env.PUBLIC_URL + path} alt={title} />
-                </a>
-            </div>
-        </Html>
+        <group position={[0, 0.5, 0]} ref={groupRef}>
+            <Html center scaleFactor={20} zIndexRange={[999,0]} >       
+                <div ref={htmlRef} style={{ display: 'flex', fontSize: 25, flexDirection: 'column', alignItems: 'center', margin: 10, textAlign: 'center'}}>
+                    <div style={{ background: 'rgb(255,255,255)'}}>
+                        <div style={{fontWeight: 'bold'}}>{title}</div>
+                        <div>{description}</div>
+                    </div>
+                    <br/>
+                    <a style={{height: '50vh', width: 400, overflow: 'hidden', display: 'flex'}} href={link} target='_blank'>
+                    </a>
+                </div>
+            </Html>
+        </group>
     )
 }
 

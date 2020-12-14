@@ -36,13 +36,13 @@ const About = ({ }) => {
                 height='50%'
             >
                 <Html center zIndexRange={[0,0]}>
-                    <div style={{ display: 'flex', textAlign: 'center', width: '100vw', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', textAlign: 'center', width: '80vw', flexDirection: 'column', alignItems: 'center' }}>
                         <div>
                             I love JavaScript, cooking, skateboarding, and music.
                         </div>
                         <br/>
                         <div>
-                            My background in 3D math gives me an inclination for computational geometry.
+                            My background in 3D math gives me an affinity for computational geometry.
                         </div>
                         <br/>
                         <div 
