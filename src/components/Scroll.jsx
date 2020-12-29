@@ -10,13 +10,13 @@ const Scroll = ({ pages = 1, children }) => {
         handleWheel(event)
         state.touchY = touchY
     }
-    let friction = 2
+    let friction = 1
     const handleWheel = e => {
         if (
             state.top > state.vpHeight/2 
             && (state.top%state.vpHeight > state.vpHeight - 10 || state.top%state.vpHeight < 5)
-        ) friction = 10
-        else friction = 2
+        ) friction = 5
+        else friction = 1
         let delta = Math.min(Math.abs(e.nativeEvent.deltaY), 5)
         delta /= friction
         if (e.nativeEvent.deltaY < 0) delta *= -1
