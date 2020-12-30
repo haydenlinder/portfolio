@@ -2,7 +2,7 @@ import { useFrame } from 'react-three-fiber'
 import { useRef } from 'react'
 import { Html } from '@react-three/drei'
 import state from '../state'
-import * as THREE from 'three'
+import { Vector3 } from 'three'
 
 const ProjectItem = ({
     title = 'title',
@@ -10,7 +10,7 @@ const ProjectItem = ({
     link = '#',
     path = '',
 }) => {
-    const vec = new THREE.Vector3()
+    const vec = new Vector3()
     const htmlRef = useRef()
     const groupRef = useRef()
     useFrame(() => {

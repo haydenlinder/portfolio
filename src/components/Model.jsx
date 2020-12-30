@@ -1,10 +1,11 @@
 import { useLoader } from 'react-three-fiber';
+import { FrontSide } from 'three';
 import {
     GLTFLoader
 } from 'three/examples/jsm/loaders/GLTFLoader';
-import * as THREE from 'three'
+import { Cache } from 'three/src/loaders/Cache'
 
-THREE.Cache.enabled = true;
+Cache.enabled = true;
 const Model = ({ 
     path,
     // scale = [1,1,1],
@@ -21,7 +22,7 @@ const Model = ({
         if (child.isMesh) {
             child.castShadow = true
             child.receiveShadow = true
-            child.material.side = THREE.FrontSide
+            child.material.side = FrontSide
         }
     })
     

@@ -25,8 +25,30 @@ const Scroll = ({ pages = 1, children }) => {
         else
             state.top = Math.min(state.top + delta, pages*state.vpHeight)
     }
+
+    // for scrollbar
+    const handlePointerMove = e => {
+        if (state.isPointerDown) {
+            const dy = (state.touchY - e.pageY)/(state.pages+1)
+            if (dy > 0) {
+                state.top = Math.max(state.top - dy, 0)
+            } else {
+                state.top = Math.min(state.top - dy, pages * state.vpHeight)
+            }
+            state.touchY = e.pageY
+        }
+    }
+    const handlePointerUp = e => {
+        state.isPointerDown = false
+    }
+    const handlePointerLeave = e => {
+        if (state.isPointerDown && e.relatedTarget === window) state.isPointerDown = false
+    }
+    //
+
     return (
         <div
+            id='scroll-area'
             style={{
                 height: '101vh',
                 width: '100vw',
@@ -34,6 +56,9 @@ const Scroll = ({ pages = 1, children }) => {
             onWheel={handleWheel}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onPointerUp={handlePointerUp}
+            onPointerMove={handlePointerMove}
+            onPointerLeave={handlePointerLeave}
         >
             {children}
         </div>

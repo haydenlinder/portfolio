@@ -4,14 +4,14 @@ import { useFrame, useThree } from 'react-three-fiber'
 import { Html, useAspect } from '@react-three/drei'
 import state from '../state'
 import Text from './Text'
-import * as THREE from 'three'
+import { Vector3 } from 'three/src/math/Vector3'
 import { Box } from '@react-three/flex'
 
 const About = ({ }) => {
     const { size } = useThree();
     const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
     const modelRef = useRef()
-    const vec = new THREE.Vector3()
+    const vec = new Vector3()
     useFrame(() => {
         if (modelRef.current) {
             modelRef.current.rotation.setFromVector3(

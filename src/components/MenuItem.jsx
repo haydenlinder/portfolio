@@ -3,9 +3,9 @@ import { useFrame } from 'react-three-fiber'
 import { useRef } from 'react'
 import { Html, Plane } from '@react-three/drei'
 import Text from './Text'
-import * as THREE from 'three'
 import Model from './Model'
 import state from '../state'
+import { BackSide } from 'three'
 
 const MenuItem = ({ 
     children,
@@ -69,13 +69,13 @@ const MenuItem = ({
                         <meshPhysicalMaterial transparent opacity={0.7} />
                     </Plane> 
                     <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,-6,6]} receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} side={THREE.BackSide}/>
+                        <meshPhysicalMaterial transparent opacity={0.7} side={BackSide}/>
                     </Plane> 
                     <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[-6,0,6]} receiveShadow>
                         <meshPhysicalMaterial transparent opacity={0.7} />
                     </Plane> 
                     <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[6,0,6]} receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} side={THREE.BackSide}/>
+                        <meshPhysicalMaterial transparent opacity={0.7} side={BackSide}/>
                     </Plane> 
                 </group>
                 <group 

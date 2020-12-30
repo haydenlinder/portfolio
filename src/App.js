@@ -5,11 +5,13 @@ import Layout from './components/Layout';
 import { Html } from '@react-three/drei'
 import Header from './components/Header'
 import Scroll from './components/Scroll'
+import Scrollbar from './components/Scrollbar'
 import { Loader } from '@react-three/drei'
+import state from './state'
 
 function App() {
   return (
-    <Scroll pages={3} >
+    <Scroll pages={state.pages} >
       <Canvas 
         concurrent
         camera={{ 
@@ -24,6 +26,7 @@ function App() {
           <Bulb position={[10, 0, 50]} />
           <Header />
           <Layout />
+          <Scrollbar />
         </Suspense>
       </Canvas> 
     </Scroll>

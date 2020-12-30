@@ -1,7 +1,7 @@
-import * as THREE from "three"
 import React, { useMemo } from "react"
 import { useUpdate } from "react-three-fiber"
 import * as data from 'three/examples/fonts/helvetiker_bold.typeface.json'
+import { Font, Vector3 } from 'three'
 
 const Text = ({
     children,
@@ -13,7 +13,7 @@ const Text = ({
     ...props
 }) => {
     const config = useMemo(() => {
-        const font = new THREE.Font(data.default)
+        const font = new Font(data.default)
         return({
             font,
             size: 16,
@@ -28,7 +28,7 @@ const Text = ({
     }, [])
     const mesh = useUpdate(
         (self) => {
-            const size = new THREE.Vector3()
+            const size = new Vector3()
             self.geometry.computeBoundingBox()
             self.geometry.boundingBox.getSize(size)
             self.position.x = hAlign === "center" ? -size.x / 2 : hAlign === "right" ? 0 : -size.x

@@ -3,15 +3,15 @@ import { useRef, useEffect } from 'react'
 import { useFrame, useThree } from 'react-three-fiber'
 import { useAspect } from '@react-three/drei'
 import state from '../state'
-import * as THREE from 'three'
 import Menu from './Menu'
 import About from './About'
 import Projects from './Projects'
 import Resume from './Resume'
+import { Vector3 } from 'three'
 
 const Layout = () => {
     const groupRef = useRef()
-    const vec = new THREE.Vector3()
+    const vec = new Vector3()
     const { size } = useThree();
     const [vpWidth, vpHeight] = useAspect("cover", size.width, size.height)
     useEffect(() => {

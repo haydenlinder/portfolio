@@ -4,15 +4,15 @@ import { useFrame } from 'react-three-fiber'
 import { Html } from '@react-three/drei'
 import state from '../state'
 import Text from './Text'
-import * as THREE from 'three'
 import ProjectItem from './ProjectItem'
 import { Box } from '@react-three/flex'
 import Atom from './Atom'
+import { Vector3 } from 'three'
 
 const Projects = ({ }) => {
     const panRef = useRef()
-    const vec1 = new THREE.Vector3()
-    const vec2 = new THREE.Vector3()
+    const vec1 = new Vector3()
+    const vec2 = new Vector3()
     useFrame(() => {
         vec1.lerp(vec2.set(0,state.pan,0), 0.1)
         panRef.current.rotation.setFromVector3(vec1)
