@@ -22,7 +22,7 @@ const ProjectItem = ({
         <group position={[0, 0.5, 0]} ref={groupRef}>
             <Html center scaleFactor={20} zIndexRange={[999,0]} >       
                 <div ref={htmlRef} style={{ display: 'flex', fontSize: 25, flexDirection: 'column', alignItems: 'center', margin: 10, textAlign: 'center'}}>
-                    <div style={{ background: 'rgb(255,255,255)'}}>
+                    <div style={{ background: 'rgb(255,255,255)', border: '1px solid black', borderRadius: 5, padding: 20}}>
                         <div style={{fontWeight: 'bold'}}>{title}</div>
                         <div>{description}</div>
                     </div>

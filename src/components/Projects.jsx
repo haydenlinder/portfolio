@@ -80,27 +80,27 @@ const Projects = ({ }) => {
                     </group>
                     <group position={[17, 1, 0]} >
                         <ProjectItem
-                            title='Abocabo'
-                            description='Find cheap produce near you.'
-                            link='https://www.abocabo.com'
+                            title='Ship Code'
+                            description='A Learning Platform for Web Development'
+                            link='https://hayden.vercel.app'
                         />
                         <Model 
-                            path='/avocado/scene.gltf' 
-                            scale={new Array(3).fill(0.05)} rotation={[0,Math.PI/3,0]}
-                            position={[0,0,0.4]}
+                            path='/small_cargo_ship/scene.gltf' 
+                            scale={new Array(3).fill(2)} rotation={[0,Math.PI/3,0]}
+                            position={[0,1,0.25]}
                         />
                     </group>
                     <group position={[-17, 1, 0]} >
                         <ProjectItem
-                            title='Tickets'
-                            description='A project management app featuring complex queries.'
-                            link='https://ticats.herokuapp.com/'
+                            title='2020 Election by Income'
+                            description='2020 United States election results by 2019 median household income per county'
+                            link='https://haydenlinder.github.io/2020-election-by-income/'
                         />
                         <Model 
-                            path='/checkmark/scene.gltf'
-                            scale={new Array(3).fill(0.3)}
-                            rotation={[0,-Math.PI/2,0]}
-                            position={[0,0,-0.5]}
+                            path='/election/scene.gltf'
+                            scale={new Array(3).fill(0.5)}
+                            rotation={[Math.PI/2, 0, Math.PI/2 ]}
+                            position={[0,0.2,0]}
                         />
                     </group>
                     <group position={[0, 1, -17]} >
