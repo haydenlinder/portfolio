@@ -3,7 +3,7 @@ const state = {
     touchY: 0,
     pan: 0,
     vpHeight: null,
-    pages: 3
+    pages: 4
 }
 
 export default state;

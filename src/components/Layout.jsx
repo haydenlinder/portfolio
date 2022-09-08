@@ -8,6 +8,7 @@ import About from './About'
 import Projects from './Projects'
 import Resume from './Resume'
 import { Vector3 } from 'three'
+import Calendar from './Calendar'
 
 const Layout = () => {
     const groupRef = useRef()
@@ -41,6 +42,7 @@ const Layout = () => {
                 <About />
                 <Projects />
                 <Resume />
+                <Calendar/>
             </Flex>
         </group>
     )

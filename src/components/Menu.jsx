@@ -37,10 +37,6 @@ const Menu = () => {
                 <MenuItem 
                     text='Projects'
                     scrollTo={vpHeight*2}
-                    modelProps={{
-                        path:'/lowpoly_earth/scene.gltf',
-                        scale: new Array(3).fill(0.02) 
-                    }}
                 >
                     <group scale={new Array(3).fill(2)}>
                         <Atom />
@@ -49,15 +45,20 @@ const Menu = () => {
                 <MenuItem 
                     text='Resume'
                     scrollTo={vpHeight * 3}
-                    modelProps={{
-                        path:'/lowpoly_earth/scene.gltf',
-                        scale: new Array(3).fill(0.02) 
-                    }}
                 >
                     <group scale={new Array(3).fill(4)} position={[0,0.5,0]}>
                         <ResumePaper />
                     </group>
                 </MenuItem>
+                <MenuItem
+                    text='Meet'
+                    scrollTo={vpHeight * 4}
+                    modelProps={{
+                        path: '/calendar/scene.gltf',
+                        scale: new Array(3).fill(1.75),
+                        rotation: [0, 0, 0]
+                    }}
+                />
             </Box>
         </Box>
     )
