@@ -63,31 +63,23 @@ const Projects = ({ }) => {
                         </div>
                     </div>
                 </Html>
+                {/* 3D */}
                 <group ref={panRef} scale={new Array(3).fill(2)}>
+                    {/* FLOOR */}
                     <mesh position={[0,-0.4,0]} receiveShadow>
                         <cylinderBufferGeometry args={[20,20,0.1,100]}/>
                         {physicalMaterial}
                     </mesh>
-                    <group position={[0,1,17]} >
-                        <ProjectItem
-                            title='Particles'
-                            description='An orbital physics simulator.'
-                            link='https://haydenlinder.github.io/particles'
-                        />
-                        <group scale={[0.5,0.5,0.5]} position={[0,0.5,0]}>
-                            <Atom />
-                        </group>
-                    </group>
                     <group position={[17, 1, 0]} >
                         <ProjectItem
                             title='Ship Code'
                             description='A Learning Platform for Web Development'
                             link='https://hayden.vercel.app'
                         />
-                        <Model 
-                            path='/small_cargo_ship/scene.gltf' 
-                            scale={new Array(3).fill(2)} rotation={[0,Math.PI/3,0]}
-                            position={[0,1,0.25]}
+                        <Model
+                            path='/small_cargo_ship/scene.gltf'
+                            scale={new Array(3).fill(2)} rotation={[0, Math.PI / 3, 0]}
+                            position={[0, 1, 0.25]}
                         />
                     </group>
                     <group position={[-17, 1, 0]} >
@@ -103,7 +95,7 @@ const Projects = ({ }) => {
                             position={[0,0.2,0]}
                         />
                     </group>
-                    <group position={[0, 1, -17]} >
+                    <group position={[0, 1, 17]} >
                         <ProjectItem
                             title='Tesla Paint Picker'
                             description='The end result from an in-depth tutorial on Three.js and react-three-fiber.'
@@ -115,6 +107,16 @@ const Projects = ({ }) => {
                                 scale={new Array(3).fill(0.007)}
                                 rotation={[0,3*Math.PI/4,0]}
                             />
+                        </group>
+                    </group>
+                    <group position={[0, 1, -17]} >
+                        <ProjectItem
+                            title='Particles'
+                            description='An orbital physics simulator.'
+                            link='https://haydenlinder.github.io/particles'
+                        />
+                        <group scale={[0.5, 0.5, 0.5]} position={[0, 0.5, 0]}>
+                            <Atom />
                         </group>
                     </group>
                 </group>

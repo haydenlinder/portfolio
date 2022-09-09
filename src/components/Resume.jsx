@@ -2,6 +2,11 @@ import ResumePaper from './ResumePaper'
 import { Html } from '@react-three/drei'
 import { Box } from '@react-three/flex'
 import { physicalMaterial } from '../materials/physicalMateral'
+import state from '../state'
+
+const handleClick = e => {
+    state.top = state.vpHeight * 4
+}
 
 const Resume = ({}) => {
     return (
@@ -10,6 +15,21 @@ const Resume = ({}) => {
             width='auto'
             centerAnchor
         >
+            <Box
+                height='20%'
+                centerAnchor
+            >
+                <Html center position={[0, -20, 0]} zIndexRange={[0, 10]}>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+                        <div
+                            onClick={handleClick}
+                            style={{ padding: 10, paddingRight: 30, paddingLeft: 30, border: '1px solid black', fontWeight: 'bold', borderRadius: 10, background: 'rgb(255,255,255, 0.4)', minWidth: 300, cursor: 'pointer' }}
+                        >
+                            Schedule a Meeting
+                        </div>
+                    </div>
+                </Html>
+            </Box>
             <group scale={new Array(3).fill(15)} position={[0,-10,0]}>
                 <mesh receiveShadow castShadow rotation={[0,Math.PI/4,0]}>
                     <boxBufferGeometry args={[1,1,1]}/>
