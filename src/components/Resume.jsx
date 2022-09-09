@@ -1,6 +1,7 @@
 import ResumePaper from './ResumePaper'
 import { Html } from '@react-three/drei'
 import { Box } from '@react-three/flex'
+import { physicalMaterial } from '../materials/physicalMateral'
 
 const Resume = ({}) => {
     return (
@@ -12,7 +13,7 @@ const Resume = ({}) => {
             <group scale={new Array(3).fill(15)} position={[0,-10,0]}>
                 <mesh receiveShadow castShadow rotation={[0,Math.PI/4,0]}>
                     <boxBufferGeometry args={[1,1,1]}/>
-                    <meshPhysicalMaterial />
+                    {physicalMaterial}
                 </mesh>
                 <Html center position={[0,1.6,0]} scaleFactor={150}> 
                     <a 

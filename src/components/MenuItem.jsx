@@ -1,11 +1,15 @@
 import { Box } from '@react-three/flex'
 import { useFrame } from 'react-three-fiber'
 import { useRef } from 'react'
-import { Html, Plane } from '@react-three/drei'
+import { Plane } from '@react-three/drei'
 import Text from './Text'
 import Model from './Model'
 import state from '../state'
 import { BackSide } from 'three'
+
+
+const physicalMaterial = <meshPhysicalMaterial transparent opacity={0.7} />
+const physicalMaterialBackSide = <meshPhysicalMaterial transparent opacity={0.7} side={BackSide} />
 
 const MenuItem = ({ 
     children,
@@ -63,19 +67,19 @@ const MenuItem = ({
             >
                 <group ref={boxRef} {...listeners}>
                     <Plane args={[12,12]}  receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} />
+                        {physicalMaterial}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,6,6]} receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} />
+                        {physicalMaterial}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,-6,6]} receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} side={BackSide}/>
+                        {physicalMaterialBackSide}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[-6,0,6]} receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} />
+                        {physicalMaterial}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[6,0,6]} receiveShadow>
-                        <meshPhysicalMaterial transparent opacity={0.7} side={BackSide}/>
+                        {physicalMaterialBackSide}
                     </Plane> 
                 </group>
                 <group 

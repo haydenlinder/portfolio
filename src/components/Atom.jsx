@@ -1,10 +1,11 @@
 import { useFrame } from 'react-three-fiber'
+import { physicalMaterial } from '../materials/physicalMateral'
 import { useRef } from 'react'
 
 const Sphere = () => (
     <mesh receiveShadow castShadow>
         <sphereBufferGeometry args={[1, 100, 100]} />
-        <meshPhysicalMaterial />
+        {physicalMaterial}
     </mesh>
 )
 

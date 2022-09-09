@@ -3,11 +3,11 @@ import Model from './Model'
 import { useFrame } from 'react-three-fiber'
 import { Html } from '@react-three/drei'
 import state from '../state'
-import Text from './Text'
 import ProjectItem from './ProjectItem'
 import { Box } from '@react-three/flex'
 import Atom from './Atom'
 import { Vector3 } from 'three'
+import { physicalMaterial } from '../materials/physicalMateral'
 
 const Projects = ({ }) => {
     const panRef = useRef()
@@ -66,7 +66,7 @@ const Projects = ({ }) => {
                 <group ref={panRef} scale={new Array(3).fill(2)}>
                     <mesh position={[0,-0.4,0]} receiveShadow>
                         <cylinderBufferGeometry args={[20,20,0.1,100]}/>
-                        <meshPhysicalMaterial />
+                        {physicalMaterial}
                     </mesh>
                     <group position={[0,1,17]} >
                         <ProjectItem

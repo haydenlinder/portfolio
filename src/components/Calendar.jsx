@@ -4,6 +4,7 @@ import { Box } from '@react-three/flex'
 import Model from './Model'
 import { useFrame } from 'react-three-fiber'
 import { useRef } from 'react'
+import { physicalMaterial } from '../materials/physicalMateral';
 
 const Calendar = ({ }) => {
     const paperRef = useRef()
@@ -20,7 +21,7 @@ const Calendar = ({ }) => {
             <group scale={new Array(3).fill(15)} position={[0, -10, 0]}>
                 <mesh receiveShadow castShadow rotation={[0, Math.PI / 4, 0]}>
                     <boxBufferGeometry args={[1, 1, 1]} />
-                    <meshPhysicalMaterial />
+                    {physicalMaterial}
                 </mesh>
                 <Html center position={[0, 1.6, 0]} scaleFactor={150}>
                     <a
