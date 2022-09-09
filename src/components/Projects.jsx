@@ -78,8 +78,10 @@ const Projects = ({ }) => {
                         />
                         <Model
                             path='/small_cargo_ship/scene.gltf'
-                            scale={new Array(3).fill(2)} rotation={[0, Math.PI / 3, 0]}
+                            scale={new Array(3).fill(2)} 
+                            rotation={[0, -3*Math.PI/4, 0]}
                             position={[0, 1, 0.25]}
+                            
                         />
                     </group>
                     <group position={[-17, 1, 0]} >
@@ -105,7 +107,7 @@ const Projects = ({ }) => {
                             <Model 
                                 path='/tesla_model_3/scene.gltf'
                                 scale={new Array(3).fill(0.007)}
-                                rotation={[0,3*Math.PI/4,0]}
+                                rotation={[0,Math.PI/4,0]}
                             />
                         </group>
                     </group>
