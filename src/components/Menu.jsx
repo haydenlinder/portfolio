@@ -1,4 +1,4 @@
-import { Flex, Box } from '@react-three/flex'
+import { Box } from '@react-three/flex'
 import Atom from './Atom'
 import MenuItem from './MenuItem'
 import ResumePaper from './ResumePaper'

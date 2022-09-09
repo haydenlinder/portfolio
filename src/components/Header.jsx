@@ -1,6 +1,5 @@
 import state from '../state'
 import { Html } from '@react-three/drei'
-import { Flex } from '@react-three/flex';
 import { useThree, useFrame } from 'react-three-fiber'
 import { useAspect } from '@react-three/drei'
 import { useRef } from 'react'

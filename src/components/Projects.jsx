@@ -70,7 +70,7 @@ const Projects = ({ }) => {
                         <cylinderBufferGeometry args={[20,20,0.1,100]}/>
                         {physicalMaterial}
                     </mesh>
-                    <group position={[17, 1, 0]} >
+                    <group position={[0, 1, 17]} >
                         <ProjectItem
                             title='Ship Code'
                             description='A Learning Platform for Web Development'
@@ -95,7 +95,7 @@ const Projects = ({ }) => {
                             position={[0,0.2,0]}
                         />
                     </group>
-                    <group position={[0, 1, 17]} >
+                    <group position={[17, 1, 0]} >
                         <ProjectItem
                             title='Tesla Paint Picker'
                             description='The end result from an in-depth tutorial on Three.js and react-three-fiber.'
