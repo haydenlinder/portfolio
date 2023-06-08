@@ -33,9 +33,10 @@ const Model = ({
   return (
     <primitive
       object={model.scene.clone()}
-      {...props}
       scale={scale}
       position={position}
+      {...props}
+      rotation={rotation}
     />
   );
 };

@@ -9,6 +9,7 @@ import Menu from './Menu'
 // import Resume from './Resume'
 import { Group, Vector3 } from 'three'
 import About from './About'
+import Projects from './Projects'
 // import Calendar from './Calendar'
 
 declare global {
@@ -47,7 +48,7 @@ const Layout = () => {
             width={vpWidth} height={vpHeight} position={[-vpWidth/2,vpHeight/2,0]}>
                 <Menu />
                 <About />
-                {/* <Projects /> */}
+                <Projects />
                 {/* <Resume /> */}
                 {/* <Calendar/> */}
             </Flex>
