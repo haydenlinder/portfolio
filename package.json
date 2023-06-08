@@ -1,5 +1,6 @@
 {
-  "name": "portfolio2",
+  "homepage": "https://haydenlinder.github.io/portfolio/",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
