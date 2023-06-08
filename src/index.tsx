@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import Bulb from "./components/Bulb";
 import Header from "./components/Header";
 import "./index.css";
+import Scrollbar from "./components/Scrollbar";
 
 const r = document.getElementById("root");
 
@@ -38,6 +39,7 @@ r &&
         <pointLight position={[10, 10, 10]} />
         <Layout />
         <Header />
+        <Scrollbar />
       </Canvas>
     </Scroll>
   );

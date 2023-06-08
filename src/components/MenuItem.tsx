@@ -108,7 +108,7 @@ const MenuItem = ({
                         </group>
                     }
                     <group position={new Vector3(-2,-1,0)}>
-                        <Text3D material={new MeshBasicMaterial({ color: 'black' })} font={'/fonts/helvetiker_regular.typeface.json'} position={[0,-3,0]}>
+                        <Text3D castShadow up={new Vector3(10,10,10)} material={new MeshBasicMaterial({ color: 'black' })} font={'/fonts/helvetiker_regular.typeface.json'} position={[0,-3,0]}>
                             {text}
                         </Text3D>
                     </group>

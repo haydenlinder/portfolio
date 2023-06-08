@@ -57,7 +57,7 @@ const Scroll = ({ pages = 1, children }: Props) => {
             id='scroll-area'
             style={{
                 height: '100vh',
-                width: '100vw',
+                width: '101vw',
             }}
             onWheel={handleWheel}
             onTouchStart={handleTouchStart}
