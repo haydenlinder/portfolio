@@ -3,9 +3,9 @@ import { Box } from '@react-three/flex'
 import Model from './Model'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
-import { Group, Vector2, Vector3 } from 'three'
+import { Group, Vector3 } from 'three'
+import { ColoredMaterial } from './ColoredMaterial'
 
-const physicalMaterial = <meshPhysicalMaterial />
 const Calendar = ({ }) => {
     const paperRef = useRef<Group>(null)
     useFrame(() => {
@@ -13,6 +13,8 @@ const Calendar = ({ }) => {
         if (!paper) return
         paper.rotation.y += 0.01
     })
+
+    const material = <ColoredMaterial/>
     return (
         <Box
             height='100%'
@@ -22,7 +24,7 @@ const Calendar = ({ }) => {
             <group scale={new Vector3(15,15,15)} position={[0, -10, 0]}>
                 <mesh receiveShadow castShadow rotation={[0, Math.PI / 4, 0]}>
                     <boxBufferGeometry args={[1, 1, 1]} />
-                    {physicalMaterial}
+                    {material}
                 </mesh>
                 <Html center position={[0, 1.6, 0]} scale={150}>
                     <a

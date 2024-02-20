@@ -3,7 +3,7 @@ import { Html } from '@react-three/drei'
 import { Box } from '@react-three/flex'
 import state from '../state'
 import { Vector3 } from 'three'
-const physicalMaterial = <meshPhysicalMaterial />
+import { ColoredMaterial } from './ColoredMaterial'
 
 const handleClick =( e: React.MouseEvent) => {
     state.top = state.vpHeight * 4
@@ -34,7 +34,7 @@ const Resume = ({}) => {
             <group scale={new Vector3(15,15,15)} position={[0,-10,0]}>
                 <mesh receiveShadow castShadow rotation={[0,Math.PI/4,0]}>
                     <boxBufferGeometry args={[1,1,1]}/>
-                    {physicalMaterial}
+                    <ColoredMaterial/>
                 </mesh>
                 <Html center position={[0,1.6,0]} scale={150}> 
                     <a 

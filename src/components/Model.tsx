@@ -22,7 +22,6 @@ const Model = ({
 
   model.scene.traverse((child) => {
     const c = child as Mesh;
-    console.log({c})
       if (c.isMesh && !Array.isArray(c.material)) {
           c.castShadow = true
           c.receiveShadow = true

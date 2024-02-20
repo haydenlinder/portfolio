@@ -1,10 +1,11 @@
-import React, { useMemo } from "react"
+import { useMemo, useRef } from "react"
 import * as data from "../helvetiker_regular.typeface.json"
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
-import { Object3DNode, extend } from '@react-three/fiber'
+import { Object3DNode, extend, useFrame } from '@react-three/fiber'
 
-import { Vector3 } from 'three'
+import { Color, MeshPhysicalMaterial } from 'three'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { isDark } from "../utils/darkMode"
 extend({ TextGeometry })
 declare module "@react-three/fiber" {
     interface ThreeElements {
@@ -18,6 +19,7 @@ const Text = ({
     size = 1,
     thickness = 2,
     color = "#000000",
+    immune = false,
     ...props
 }) => {
     const config = useMemo(() => {
@@ -34,12 +36,24 @@ const Text = ({
             // bevelSegments: 8,
         })
     }, [])
+
+    const ref = useRef<MeshPhysicalMaterial>(null)
+    useFrame(() => {
+        if (immune) return
+        if (isDark() && ref.current?.color.equals(new Color('black'))) {
+            ref.current?.setValues?.({color: 'white'})
+            if (ref.current?.color) ref.current.color = new Color('white')
+        } else if (!isDark() && !ref.current?.color.equals(new Color('black'))) {
+            ref.current?.setValues?.({color: 'black'})
+            if (ref.current?.color) ref.current.color = new Color('black')
+        }
+    }) 
  
     return (
         <group {...props} scale={[0.1 * size, 0.1 * size, 0.1]}>
-            <mesh >
+            <mesh castShadow={true}>
                 <textGeometry args={[children, config]} />
-                <meshPhysicalMaterial color={color} />
+                <meshPhysicalMaterial ref={ref}  />
             </mesh>
         </group>
     )

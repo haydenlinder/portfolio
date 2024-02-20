@@ -7,7 +7,9 @@ import ProjectItem from './ProjectItem'
 import { Box } from '@react-three/flex'
 import Atom from './Atom'
 import { Group, Vector3 } from 'three'
-const physicalMaterial = <meshPhysicalMaterial />
+import { ColoredMaterial } from './ColoredMaterial'
+const physicalMaterial = <ColoredMaterial />
+
 
 const Projects = ({ }) => {
     const panRef = useRef<Group>(null)

@@ -2,7 +2,7 @@ import state from '../state'
 import { Html } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useAspect } from '@react-three/drei'
-import React, { MouseEventHandler, useRef } from 'react'
+import { MouseEventHandler, useRef } from 'react'
 
 const Header = () => {
     const menuRef = useRef<HTMLDivElement>(null)
@@ -43,6 +43,7 @@ const Header = () => {
                     }}
                     >
                     <div
+                    className='dark op'
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -60,20 +61,28 @@ const Header = () => {
                         </div>
                         <div>Web Developer</div>
                     </div>
+                    {/* MENU */}
                     <div
                         ref={menuRef}
+                        className='menu'
                         style={{
                             padding: '10px',
                             border: '1px solid black',
                             borderRadius: 10,
                             cursor: 'pointer',
                             right: '20px',
-                            background: 'white',
                             height: 'fit-content'
                         }}
                         onClick={handleClick}
                     >
                         Menu
+                    </div>
+                    {/* SWITCH */}
+                    <div>
+                    <label className="switch">
+                        <input type="checkbox" onClick={()=>document.querySelector('html')?.classList.toggle('dark')}/>
+                    <span className="slider round"></span>
+                    </label>
                     </div>
                 </nav>
             </header>

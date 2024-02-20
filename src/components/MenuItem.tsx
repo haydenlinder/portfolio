@@ -1,15 +1,14 @@
 import { Box } from '@react-three/flex'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
-import { Plane, Text3D, useFont } from '@react-three/drei'
+import { Plane } from '@react-three/drei'
 import Model from './Model'
 import state from '../state'
-import { BackSide, BoxGeometry, Group, Mesh, MeshBasicMaterial, SphereGeometry, Vector3 } from 'three'
+import { Group, Mesh, Vector3 } from 'three'
+import { ColoredMaterial, ColoredMaterialBackSide } from './ColoredMaterial'
+import Text from './Text'
 
 
-
-const physicalMaterial = <meshPhysicalMaterial transparent opacity={0.7} />
-const physicalMaterialBackSide = <meshPhysicalMaterial transparent opacity={0.7} side={BackSide} />
 
 type Props = React.PropsWithChildren<{
     spin?: boolean;
@@ -74,6 +73,9 @@ const MenuItem = ({
         onPointerUp: handlePointerUp,
     }
 
+    let material = <ColoredMaterial/>
+    let materialBackSide = <ColoredMaterialBackSide/>
+    
     return (
         <Box 
             centerAnchor 
@@ -83,19 +85,19 @@ const MenuItem = ({
             >
                 <group ref={boxRef} {...listeners}>
                     <Plane args={[12,12]}  receiveShadow>
-                        {physicalMaterial}
+                        {material}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,6,6]} receiveShadow>
-                        {physicalMaterial}
+                        {material}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[Math.PI/2,0,0]} position={[0,-6,6]} receiveShadow>
-                        {physicalMaterialBackSide}
+                        {materialBackSide}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[-6,0,6]} receiveShadow>
-                        {physicalMaterial}
+                        {material}
                     </Plane> 
                     <Plane args={[12,12]} rotation={[0,Math.PI/2,0]} position={[6,0,6]} receiveShadow>
-                        {physicalMaterialBackSide}
+                        {materialBackSide}
                     </Plane> 
                 </group>
                 <group 
@@ -107,10 +109,10 @@ const MenuItem = ({
                             <Model {...modelProps} />
                         </group>
                     }
-                    <group position={new Vector3(-2,-1,0)}>
-                        <Text3D castShadow up={new Vector3(10,10,10)} material={new MeshBasicMaterial({ color: 'black' })} font={'/fonts/helvetiker_regular.typeface.json'} position={[0,-3,0]}>
+                    <group position={new Vector3(-0.4*text.length,-4,0)}>
+                        <Text hAlign='center' vAlign='center' size={0.7} thickness={1}>
                             {text}
-                        </Text3D>
+                        </Text>
                     </group>
                 </group>
             </group>

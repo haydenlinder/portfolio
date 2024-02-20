@@ -1,11 +1,11 @@
 import { useRef } from 'react'
 import Model from './Model'
 import { useFrame, useThree } from '@react-three/fiber'
-import { Html, Text3D, useAspect } from '@react-three/drei'
+import { Html, useAspect } from '@react-three/drei'
 import state from '../state'
 import { Vector3 } from 'three/src/math/Vector3'
 import { Box } from '@react-three/flex'
-import { Group, MeshBasicMaterial } from 'three'
+import { Group } from 'three'
 import Text from './Text'
 
 const About = ({ }) => {
@@ -70,7 +70,7 @@ const About = ({ }) => {
                             <planeBufferGeometry args={[3.5,0.6]}/>
                             <meshBasicMaterial color='black' opacity={0.3} transparent/>
                         </mesh>
-                        <Text position={[-1.3,-0.15,0]} color='white' size={0.2}  thickness={0.2}>
+                        <Text immune position={[-1.3,-0.15,0]} color='white' size={0.2}  thickness={0.2}>
                             San Francisco
                         </Text>
                     </group>
