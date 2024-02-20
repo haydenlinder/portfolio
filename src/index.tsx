@@ -32,14 +32,14 @@ r &&
               />
             </Html>
           }
-        ></Suspense>
-        <Bulb position={[10, 0, 50]} />
-
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} />
-        <Layout />
-        <Header />
-        <Scrollbar />
+        >
+          <Layout />
+          <Bulb position={[10, 0, 50]} />
+          <ambientLight intensity={0.3} />
+          <pointLight position={[10, 10, 10]} />
+          <Header />
+          <Scrollbar />
+        </Suspense>
       </Canvas>
     </Scroll>
   );
