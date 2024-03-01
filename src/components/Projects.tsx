@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import Model from './Model'
 import { useFrame } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
@@ -8,16 +8,19 @@ import { Box } from '@react-three/flex'
 import Atom from './Atom'
 import { Group, Vector3 } from 'three'
 import { ColoredMaterial } from './ColoredMaterial'
+import { useStore } from '../utils/state'
+
 const physicalMaterial = <ColoredMaterial />
 
-
 const Projects = ({ }) => {
+    const {pan, panBy} = useStore()
+    const [vec1, setVec1] = useState(new Vector3(0,pan,0))
     const panRef = useRef<Group>(null)
-    const vec1 = new Vector3()
-    const vec2 = new Vector3()
+    const vec2 = new Vector3(0,pan,0)
+
     useFrame(() => {
         if (!panRef.current) return
-        vec1.lerp(vec2.set(0,state.pan,0), 0.1)
+        vec1.lerp(vec2, 0.1)
         panRef.current.rotation.setFromVector3(vec1)
     })
 
@@ -26,8 +29,11 @@ const Projects = ({ }) => {
     }
 
     const handlePan = (num: number) => {
-        state.pan += num*Math.PI/2
+        panBy(num)
+        setVec1(new Vector3(0,pan+num,0))
     }
+
+    const ticks = Math.abs(2*pan/Math.PI) % 4
 
     return (
         <Box 
@@ -67,7 +73,7 @@ const Projects = ({ }) => {
                     </div>
                 </Html>
                 {/* 3D */}
-                <group ref={panRef} scale={new Vector3(2,2,2)}>
+                <group ref={panRef} scale={new Vector3(2,2,2)} rotation={[0,pan,0]}>
                     {/* FLOOR */}
                     <mesh position={[0,-0.4,0]} receiveShadow>
                         <cylinderBufferGeometry args={[20,20,0.1,100]}/>
@@ -75,6 +81,7 @@ const Projects = ({ }) => {
                     </mesh>
                     <group position={[0, 1, 17]} >
                         <ProjectItem
+                            focus={ticks === 0}
                             title='Ship Code'
                             description='A Learning Platform for Web Development'
                             link='https://hayden.vercel.app'
@@ -88,6 +95,7 @@ const Projects = ({ }) => {
                     </group>
                     <group position={[-17, 1, 0]} >
                         <ProjectItem
+                        focus={ticks === 3}
                             title='2020 Election by Income'
                             description='2020 United States election results by 2019 median household income per county'
                             link='https://haydenlinder.github.io/2020-election-by-income/'
@@ -101,6 +109,7 @@ const Projects = ({ }) => {
                     </group>
                     <group position={[17, 1, 0]} >
                         <ProjectItem
+                        focus={ticks === 1}
                             title='Tesla Paint Picker'
                             description='The end result from an in-depth tutorial on Three.js and react-three-fiber.'
                             link='https://haydenlinder.github.io/react-three-fiber/'
@@ -115,6 +124,7 @@ const Projects = ({ }) => {
                     </group>
                     <group position={[0, 1, -17]} >
                         <ProjectItem
+                        focus={ticks === 2}
                             title='Particles'
                             description='An orbital physics simulator.'
                             link='https://haydenlinder.github.io/particles'

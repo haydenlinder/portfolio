@@ -1,18 +1,14 @@
-import { Flex, Box } from '@react-three/flex'
+import { Flex } from '@react-three/flex'
 import { useRef, useEffect } from 'react'
 import { RootState, useFrame, useThree } from '@react-three/fiber'
 import { useAspect } from '@react-three/drei'
 import state from '../state'
 import Menu from './Menu'
-// import About from './About'
-// import Projects from './Projects'
-// import Resume from './Resume'
 import { Group, Vector3 } from 'three'
 import About from './About'
 import Projects from './Projects'
 import Resume from './Resume'
 import Calendar from './Calendar'
-// import Calendar from './Calendar'
 
 declare global {
     interface Window { state: RootState; }

@@ -3,6 +3,7 @@ import { Html } from '@react-three/drei'
 import { useThree, useFrame } from '@react-three/fiber'
 import { useAspect } from '@react-three/drei'
 import { MouseEventHandler, useRef } from 'react'
+import { useStore } from '../utils/state'
 
 const Header = () => {
     const menuRef = useRef<HTMLDivElement>(null)
@@ -15,6 +16,8 @@ const Header = () => {
         if (menu && state.top === 0) menu.style.display = 'none'
         if (menu && state.top !== 0) menu.style.display = 'block'
     })
+    const {toggleDark} = useStore()
+
     const { size } = useThree();
     const [vpWidth, vpHeight] = useAspect(size.width, size.height)
     return (
@@ -80,7 +83,7 @@ const Header = () => {
                     {/* SWITCH */}
                     <div>
                     <label className="switch">
-                        <input type="checkbox" onClick={()=>document.querySelector('html')?.classList.toggle('dark')}/>
+                        <input type="checkbox" onClick={toggleDark}/>
                     <span className="slider round"></span>
                     </label>
                     </div>
