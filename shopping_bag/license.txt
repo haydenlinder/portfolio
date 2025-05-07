@@ -1,0 +1,11 @@
+Model Information:
+* title:	Shopping Bag
+* source:	https://sketchfab.com/3d-models/shopping-bag-cce3843714f74f85858a325f29ec6991
+* author:	NoLagHere (https://sketchfab.com/NoLagHere)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Shopping Bag" (https://sketchfab.com/3d-models/shopping-bag-cce3843714f74f85858a325f29ec6991) by NoLagHere (https://sketchfab.com/NoLagHere) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
